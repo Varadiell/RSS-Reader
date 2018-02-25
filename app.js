@@ -2,6 +2,9 @@
 const electron = require('electron');
 const {app, BrowserWindow} = electron;
 
+// Modules
+const path = require('path');
+
 
 
 // Global reference of the window object to prevent auto-close when it is garbage collected.
@@ -20,7 +23,8 @@ function createWindow(){
     'width' : dimensions.width - 100,
     'height' : dimensions.height - 100,
     'minWidth' : 768,
-    'minHeight' : 300
+    'minHeight' : 300,
+    'icon' : path.join(__dirname, './dist/favicon.ico')
   });
 
   // Load index from Express in the main window.
@@ -30,7 +34,7 @@ function createWindow(){
   mainWindow.focus();
 
   // DevTools.
-  // mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools();
 
   // Dereference the window object when the window is closed.
   mainWindow.on('closed', function(){
