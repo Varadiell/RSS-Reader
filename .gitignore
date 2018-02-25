@@ -1,3 +1,13 @@
+# =========================
+# MANUALLY ADDED
+# =========================
+
+node_modules
+
+# =========================
+# DEFAULT
+# =========================
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
