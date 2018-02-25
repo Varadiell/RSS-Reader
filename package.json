@@ -1,0 +1,22 @@
+{
+  "name": "RSS-Reader",
+  "version": "0.0.1",
+  "description": "RSS reader application. Built with electron, express, angular5 & sqlite3.",
+  "main": "app.js",
+  "scripts": {
+    "start": "electron .",
+    "test_eslint": "./node_modules/.bin/eslint ./"
+  },
+  "keywords": [
+    "electron",
+    "express",
+    "angular",
+    "sqlite"
+  ],
+  "author": "William SIMON--VEZO",
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "~1.8.2",
+    "eslint": "~4.18.1"
+  }
+}
