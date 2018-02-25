@@ -1,9 +1,6 @@
 // Electron
 const electron = require('electron');
 const {app, BrowserWindow} = electron;
-// Requires
-const path = require('path');
-const url = require('url');
 
 
 
@@ -11,6 +8,9 @@ const url = require('url');
 let mainWindow = null;
 
 function createWindow(){
+
+  // Launch the express server
+  app.server = require('./express.js');
 
   // Computer window dimensions.
   const dimensions = electron.screen.getPrimaryDisplay().size;
@@ -23,12 +23,11 @@ function createWindow(){
     'minHeight' : 300
   });
 
-  // Load index.html in the main window.
-  mainWindow.loadURL(url.format({
-    'pathname' : path.join(__dirname, 'index.html'),
-    'protocol' : 'file:',
-    'slashes' : true
-  }));
+  // Load index from Express in the main window.
+  mainWindow.loadURL('http://localhost:3000');
+
+  // Focus on the main window.
+  mainWindow.focus();
 
   // DevTools.
   // mainWindow.webContents.openDevTools()
