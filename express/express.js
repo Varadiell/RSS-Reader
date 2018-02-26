@@ -11,7 +11,7 @@ app.listen(3000, function(){
 });
 
 // Serve views folder (dist)
-app.use('', express.static(path.join(__dirname, 'dist')));
+app.use('', express.static(path.join(__dirname, '../dist')));
 
 // 404
 app.use(function(req, res, next) {
