@@ -119,6 +119,7 @@
     "radix" : ["error", "always"],
     "require-await" : ["error"],
     "semi" : ["error", "always"],
+    "space-before-blocks" : ["error", {"functions": "never", "keywords": "never", "classes": "always"}],
     "space-before-function-paren" : ["error", "never"],
     "space-infix-ops" : ["error"],
     "spaced-comment" : ["error", "always"],

@@ -14,7 +14,7 @@ app.listen(3000, function(){
 app.use('', express.static(path.join(__dirname, '../dist')));
 
 // 404
-app.use(function(req, res, next) {
+app.use(function(req, res, next){
   const err = new Error('Not Found');
   err.status = 404;
   next(err);
