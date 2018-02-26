@@ -24,7 +24,7 @@ function createWindow(){
     'height' : dimensions.height - 100,
     'minWidth' : 768,
     'minHeight' : 300,
-    'icon' : path.join(__dirname, './dist/favicon.ico')
+    'icon' : path.join(__dirname, '../dist/favicon.ico')
   });
 
   // Load index from Express in the main window.
