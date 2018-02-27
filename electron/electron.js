@@ -13,7 +13,7 @@ let mainWindow = null;
 function createWindow(){
 
   // Launch the express server
-  app.server = rootRequire('express/express.js');
+  app.expressApp = rootRequire('express/express.js');
 
   // Computer window dimensions.
   const dimensions = electron.screen.getPrimaryDisplay().size;
@@ -28,13 +28,13 @@ function createWindow(){
   });
 
   // Load index from Express in the main window.
-  mainWindow.loadURL('http://localhost:3000');
+  mainWindow.loadURL('http://localhost:' + app.expressApp.get('port'));
 
   // Focus on the main window.
   mainWindow.focus();
 
-  // DevTools.
-  mainWindow.webContents.openDevTools();
+  // OpenDevTools if node_env is development.
+  if(app.expressApp.get('node_env') === 'development') mainWindow.webContents.openDevTools();
 
   // Dereference the window object when the window is closed.
   mainWindow.on('closed', function(){

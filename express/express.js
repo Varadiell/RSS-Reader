@@ -13,19 +13,22 @@ const app = express();
 
 // =================================================================
 
-// Environment
+// Environment (node_env)
 app.set('node_env', (process.env.NODE_ENV || 'development').trim());
+
+// Port
+app.set('port', expressConfig.port);
 
 // Views
 app.set('views', path.join(__dirname, '../dist'));
 app.use('', express.static(path.join(__dirname, '../dist')));
 
 // SQLite3 initialization
-app.use(rootRequire('middlewares/sqliteInit'));
+rootRequire('functions/sqliteInit');
 
 // Start listening
-app.listen(expressConfig.port, function(){
-  console.info('Listening on port %s...', expressConfig.port);
+app.listen(app.get('port'), function(){
+  console.info('Listening on port %s.', app.get('port'));
 });
 
 // =================================================================
@@ -38,25 +41,8 @@ app.use(function(req, res, next){
   next(errorHandler.newError(404, 'Page not found.'));
 });
 
-// Manage errors (no stacktrace in production)
-app.use(function(err, req, res){
-  // Error status (default 500)
-  err.status = err.status || 500;
-  // Status response
-  res.status(err.status);
-  // No stacktrace if not in development environment or err.status is not 500
-  if(app.get('node_env') !== 'development' || err.status !== 500) err.stack = undefined;
-  // Response object
-  const response = {
-    'success' : false,
-    'error' : {
-      'status' : err.status,
-      'message' : err.message,
-      'stack' : err.stack
-    }
-  };
-  res.send(response);
-});
+// Error response
+app.use(rootRequire('middlewares/errorResponse'));
 
 
 
