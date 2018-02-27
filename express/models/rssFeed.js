@@ -1,5 +1,5 @@
 // Bookshelf
-const bookshelf = rootRequire('config/bookshelf');
+const bookshelf = rootRequire('express/config/bookshelf');
 
 
 

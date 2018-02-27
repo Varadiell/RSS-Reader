@@ -5,11 +5,11 @@ const router = new express.Router();
 
 
 // === PARAMS
-rootRequire('routes/params')(router);
+rootRequire('express/routes/params')(router);
 
 // === ITEMS
 // RssFeed
-rootRequire('routes/items/rssFeed')(router);
+rootRequire('express/routes/items/rssFeed')(router);
 
 
 

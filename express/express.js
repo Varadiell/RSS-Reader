@@ -2,9 +2,9 @@
 const express = require('express');
 const path = require('path');
 // Config
-const expressConfig = rootRequire('config/express');
+const expressConfig = rootRequire('express/config/express');
 // Functions
-const errorHandler = rootRequire('functions/errorHandler');
+const errorHandler = rootRequire('express/functions/errorHandler');
 
 
 
@@ -24,7 +24,7 @@ app.set('views', path.join(__dirname, '../dist'));
 app.use('', express.static(path.join(__dirname, '../dist')));
 
 // SQLite3 initialization
-rootRequire('functions/sqliteInit');
+rootRequire('express/functions/sqliteInit');
 
 // Start listening
 app.listen(app.get('port'), function(){
@@ -34,7 +34,7 @@ app.listen(app.get('port'), function(){
 // =================================================================
 
 // Routes
-app.use(rootRequire('routes/routes'));
+app.use(rootRequire('express/routes/routes'));
 
 // 404, page not found.
 app.use(function(req, res, next){
@@ -42,7 +42,7 @@ app.use(function(req, res, next){
 });
 
 // Error response
-app.use(rootRequire('middlewares/errorResponse'));
+app.use(rootRequire('express/middlewares/errorResponse'));
 
 
 

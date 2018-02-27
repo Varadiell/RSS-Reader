@@ -1,5 +1,5 @@
 // RssFeed
-const RssFeed = rootRequire('models/rssFeed');
+const RssFeed = rootRequire('express/models/rssFeed');
 
 
 

@@ -1,5 +1,5 @@
 // RssFeed controller
-const rssFeedController = rootRequire('controllers/items/rssFeed');
+const rssFeedController = rootRequire('express/controllers/items/rssFeed');
 
 
 

@@ -1,4 +1,4 @@
-const knex = rootRequire('config/knex');
+const knex = rootRequire('express/config/knex');
 
 
 

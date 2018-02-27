@@ -1,7 +1,7 @@
 // Bookshelf
 const bookshelf = require('bookshelf');
 // Knex
-const knexConfig = rootRequire('config/knex');
+const knexConfig = rootRequire('express/config/knex');
 
 
 
