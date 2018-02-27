@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { RssFeedsComponent } from './rss-feeds/rss-feeds.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RssFeedsComponent
   ],
   imports: [
     BrowserModule

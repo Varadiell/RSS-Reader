@@ -19,9 +19,8 @@ app.set('node_env', (process.env.NODE_ENV || 'development').trim());
 // Port
 app.set('port', expressConfig.port);
 
-// Views
-app.set('views', path.join(__dirname, '../dist'));
-app.use('', express.static(path.join(__dirname, '../dist')));
+// Angular dist folder
+app.use(express.static(path.join(__dirname, '../dist')));
 
 // SQLite3 initialization
 rootRequire('express/functions/sqliteInit');
