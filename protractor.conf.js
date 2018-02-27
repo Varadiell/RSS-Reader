@@ -21,7 +21,7 @@ exports.config = {
     'showColors' : true,
     'defaultTimeoutInterval' : 30000
   },
-  onPrepare() {
+  onPrepare(){
     require('ts-node').register({
       'project' : 'e2e/tsconfig.e2e.json'
     });
