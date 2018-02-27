@@ -5,4 +5,5 @@ const knexConfig = rootRequire('config/knex');
 
 
 
+// Bookshelf configuration
 module.exports = bookshelf(knexConfig);
