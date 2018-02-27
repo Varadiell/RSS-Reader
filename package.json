@@ -7,7 +7,9 @@
     "electron",
     "express",
     "angular",
-    "sqlite"
+    "sqlite",
+    "bookshelf",
+    "knex"
   ],
   "license": "GPL-3.0",
   "main": "app.js",
