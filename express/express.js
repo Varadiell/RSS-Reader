@@ -21,19 +21,22 @@ const knex = require('knex')({
 const bookshelf = require('bookshelf')(knex);
 
 // Create table rssFeeds if it does not exist.
-knex.schema.hasTable('rssFeeds').then(function(exists){
-  if(!exists){
+app.use(function(req, res, next){
+  knex.schema.hasTable('rssFeeds').then(function(exists){
+    if(exists) return next();
     return knex.schema.createTable('rssFeeds', function(table){
       table.increments('id');
       table.string('url', 250);
       table.text('xml', 'longtext');
     }).then(function(){
       console.info('Table "rssFeeds" created.');
+      next();
     }).catch(function(err){
       console.info('Error : table "rssFeeds" creation failed.');
       console.info(err);
+      next();
     });
-  }
+  });
 });
 
 // RssFeed model
@@ -60,20 +63,20 @@ const RssFeed = bookshelf.Model.extend({
   }
 });
 
-// Test find (by id)
-RssFeed.findById(1).then(function(rssFeed){
-  console.info(rssFeed);
+app.use(function(req, res, next){
+  // Test find (by id)
+  RssFeed.findById(1).then(function(rssFeed){
+    console.info(rssFeed);
+  });
+  // Test create
+  const newRssFeed = {
+    'url' : 'https://www.judgehype.com/nouvelles.xml'
+  };
+  RssFeed.create(newRssFeed).then(function(rssFeed){
+    console.info(rssFeed);
+  });
+  next();
 });
-
-// Test create
-const newRssFeed = {
-  'url' : 'https://www.judgehype.com/nouvelles.xml'
-};
-RssFeed.create(newRssFeed).then(function(rssFeed){
-  console.info(rssFeed);
-});
-
-
 
 // Serve views folder (dist)
 app.use('', express.static(path.join(__dirname, '../dist')));
