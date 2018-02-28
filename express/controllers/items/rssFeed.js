@@ -7,8 +7,8 @@ const RssFeed = rootRequire('express/models/rssFeed');
 exports.create = function(req, res){
   RssFeed.create({
     'url' : 'https://www.judgehype.com/nouvelles.xml'
-  }).then(function(){
-    res.json();
+  }).then(function(rssFeed){
+    res.json(rssFeed);
   });
 };
 
