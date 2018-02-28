@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RssFeed } from '../rssFeed';
 
+import { RssFeedService } from '../rss-feed.service';
+
 @Component({
   selector: 'app-rss-feeds',
   templateUrl: './rss-feeds.component.html',
@@ -8,15 +10,16 @@ import { RssFeed } from '../rssFeed';
 })
 export class RssFeedsComponent implements OnInit {
 
-  rssFeed: RssFeed = {
-    id: 1,
-    url: 'https://www.judgehype.com/nouvelles.xml',
-    xml: null
-  };
+  rssFeeds: RssFeed[];
 
-  constructor() { }
+  constructor(private rssFeedService: RssFeedService) { }
 
   ngOnInit() {
+    this.getRssFeeds();
+  }
+
+  getRssFeeds(): void {
+    this.rssFeedService.getRssFeeds().subscribe((rssFeeds) => this.rssFeeds = rssFeeds);
   }
 
 }

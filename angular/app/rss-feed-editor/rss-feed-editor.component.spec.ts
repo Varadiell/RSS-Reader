@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RssFeedsComponent } from './rss-feeds.component';
+import { RssFeedEditorComponent } from './rss-feed-editor.component';
 
-describe('RssFeedsComponent', () => {
-  let component: RssFeedsComponent;
-  let fixture: ComponentFixture<RssFeedsComponent>;
+describe('RssFeedEditorComponent', () => {
+  let component: RssFeedEditorComponent;
+  let fixture: ComponentFixture<RssFeedEditorComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RssFeedsComponent ]
+      declarations: [ RssFeedEditorComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RssFeedsComponent);
+    fixture = TestBed.createComponent(RssFeedEditorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
