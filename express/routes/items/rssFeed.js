@@ -20,7 +20,7 @@ module.exports = function(router){
 
   // GetAll
   router.get(
-    '/api/rssFeed/all',
+    '/api/rssFeeds',
     rssFeedController.getAll
   );
 
