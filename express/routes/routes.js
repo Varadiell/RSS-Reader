@@ -11,6 +11,9 @@ rootRequire('express/routes/params')(router);
 // RssFeed
 rootRequire('express/routes/items/rssFeed')(router);
 
+// === INDEX (GET redirect)
+rootRequire('express/routes/index')(router);
+
 
 
 // Exports
