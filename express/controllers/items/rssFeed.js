@@ -8,34 +8,28 @@ exports.create = function(req, res){
   RssFeed.create({
     'url' : 'https://www.judgehype.com/nouvelles.xml'
   }).then(function(){
-    res.json({'success' : true});
+    res.json();
   });
 };
 
 // Get
 exports.get = function(req, res){
-  res.json({
-    'success' : true,
-    'itemRssFeed' : req.itemRssFeed
-  });
+  res.json(req.itemRssFeed);
 };
 
 // GetAll
 exports.getAll = function(req, res){
   RssFeed.findAll({}).then(function(rssFeeds){
-    res.json({
-      'success' : true,
-      'listRssFeeds' : rssFeeds
-    });
+    res.json(rssFeeds);
   });
 };
 
 // Update
 exports.update = function(req, res){
-  res.json({'success' : true});
+  res.json();
 };
 
 // Delete
 exports.delete = function(req, res){
-  res.json({'success' : true});
+  res.json();
 };
