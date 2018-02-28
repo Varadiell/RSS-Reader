@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { LoggerService } from './logger.service';
 import { RSSFEEDS } from './mock-rssFeeds';
 import { RssFeed } from './rssFeed';
 
@@ -15,13 +16,14 @@ const httpOptions = {
 export class RssFeedService {
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private logger: LoggerService
   ) { }
 
   addRssFeed(rssFeed: RssFeed): Observable<RssFeed> {
     return this.http.post<RssFeed>('api/rssFeed', rssFeed, httpOptions)
     .pipe(
-      tap((newRssFeed: RssFeed) => this.log(`added rssFeed id=${newRssFeed.id}`)),
+      tap((newRssFeed: RssFeed) => this.logger.log(`added rssFeed id=${newRssFeed.id}`)),
       catchError(this.handleError<RssFeed>('addRssFeed(rssFeed)'))
     );
   }
@@ -29,7 +31,7 @@ export class RssFeedService {
   deleteRssFeed(rssFeed: RssFeed): Observable<RssFeed> {
     return this.http.delete<RssFeed>(`api/rssFeed/${rssFeed.id}`)
     .pipe(
-      tap((_) => this.log(`deleted rssFeed id: ${rssFeed.id}`)),
+      tap((_) => this.logger.log(`deleted rssFeed id: ${rssFeed.id}`)),
       catchError(this.handleError<RssFeed>(`deleteRssFeed(${rssFeed.id})`))
     );
   }
@@ -37,7 +39,7 @@ export class RssFeedService {
   getRssFeeds(): Observable<RssFeed[]> {
     return this.http.get<RssFeed[]>('api/rssFeeds')
     .pipe(
-      tap((rssFeeds) => this.log('fetched rssFeeds')),
+      tap((rssFeeds) => this.logger.log('fetched rssFeeds')),
       catchError(this.handleError('getRssFeeds()', []))
     );
   }
@@ -45,7 +47,7 @@ export class RssFeedService {
   getRssFeed(id: number): Observable<RssFeed> {
     return this.http.get<RssFeed>(`api/rssFeed/${id}`)
     .pipe(
-      tap((_) => this.log(`fetched rssFeed id: ${id}`)),
+      tap((_) => this.logger.log(`fetched rssFeed id: ${id}`)),
       catchError(this.handleError<RssFeed>(`getRssFeed(${id})`))
     );
   }
@@ -53,22 +55,18 @@ export class RssFeedService {
   updateRssFeed(rssFeed: RssFeed): Observable<any> {
     return this.http.put(`api/rssFeed/${rssFeed.id}`, rssFeed, httpOptions)
     .pipe(
-      tap((_) => this.log(`updated rssFeed id: ${rssFeed.id}`)),
+      tap((_) => this.logger.log(`updated rssFeed id: ${rssFeed.id}`)),
       catchError(this.handleError<any>('updateRssFeed(rssFeed)'))
     );
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      console.error(error);
-      this.log(`${operation} failed: ${error.message}`);
+      this.logger.error(error);
+      this.logger.log(`${operation} failed: ${error.message}`);
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
-  }
-
-  private log(message: string) {
-    console.log(message);
   }
 
 }

@@ -12,6 +12,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 
 // Services
+import { LoggerService } from './logger.service';
 import { RssFeedService } from './rss-feed.service';
 
 @NgModule({
@@ -31,6 +32,7 @@ import { RssFeedService } from './rss-feed.service';
     HttpClientModule
   ],
   providers: [
+    LoggerService,
     RssFeedService
   ]
 })
