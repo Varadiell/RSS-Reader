@@ -8,7 +8,7 @@ module.exports = function(router){
 
   // Create
   router.post(
-    '/api/rssFeed/create',
+    '/api/rssFeed',
     rssFeedController.create
   );
 
@@ -26,13 +26,13 @@ module.exports = function(router){
 
   // Update
   router.put(
-    '/api/rssFeed/:rssFeedId/update',
+    '/api/rssFeed/:rssFeedId',
     rssFeedController.update
   );
 
   // Delete
   router.delete(
-    '/api/rssFeed/:rssFeedId/delete',
+    '/api/rssFeed/:rssFeedId',
     rssFeedController.delete
   );
 
