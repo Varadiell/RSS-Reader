@@ -2,6 +2,9 @@
   "rulesDirectory": [
     "node_modules/codelyzer"
   ],
+  "extends": [
+    "tslint:recommended"
+  ],
   "rules": {
     "arrow-return-shorthand": true,
     "callable-types": true,
@@ -73,6 +76,8 @@
     "no-trailing-whitespace": true,
     "no-unnecessary-initializer": true,
     "no-unused-expression": true,
+    "no-unused-imports": true,
+    "no-unused-variable": true,
     "no-use-before-declare": true,
     "no-var-keyword": true,
     "object-literal-sort-keys": false,
@@ -93,6 +98,7 @@
       true,
       "always"
     ],
+    "trailing-comma" : false,
     "triple-equals": [
       true,
       "allow-null-check"
