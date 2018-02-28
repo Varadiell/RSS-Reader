@@ -5,5 +5,17 @@
     <a routerLink="/rssFeed/{{rssFeed.id}}">
       <span class="badge">{{rssFeed.id}}</span> {{rssFeed.url}}
     </a>
+    <button class="delete" title="delete rssFeed" (click)="deleteRssFeed(rssFeed)">Delete</button>
   </li>
 </ul>
+
+
+
+<h2>New RssFeed</h2>
+
+<div>
+  <label>url:
+    <input #rssFeedUrl placeholder="url"/>
+  </label>
+  <button (click)="addRssFeed(rssFeedUrl.value); rssFeedUrl.value=''">Add</button>
+</div>

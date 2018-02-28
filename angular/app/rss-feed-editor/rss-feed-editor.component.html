@@ -5,8 +5,9 @@
   <div><span>xml:</span> {{rssFeed.xml}}</div>
   <div>
     <label>url:
-      <input [(ngModel)]="rssFeed.url" placeholder="url">
+      <input [(ngModel)]="rssFeed.url" placeholder="url"/>
     </label>
   </div>
 </div>
+<button (click)="save()">Save</button>
 <button (click)="goBack()">Go back</button>

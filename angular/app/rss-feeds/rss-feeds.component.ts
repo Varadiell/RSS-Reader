@@ -18,6 +18,18 @@ export class RssFeedsComponent implements OnInit {
     this.getRssFeeds();
   }
 
+  addRssFeed(url: string): void {
+    url = url.trim();
+    if (!url) { return; }
+    this.rssFeedService.addRssFeed({url} as RssFeed)
+    .subscribe((rssFeed) => this.rssFeeds.push(rssFeed));
+  }
+
+  deleteRssFeed(rssFeed: RssFeed): void {
+    this.rssFeeds = this.rssFeeds.filter((itemRssFeed) => itemRssFeed !== rssFeed);
+    this.rssFeedService.deleteRssFeed(rssFeed).subscribe();
+  }
+
   getRssFeeds(): void {
     this.rssFeedService.getRssFeeds().subscribe((rssFeeds) => this.rssFeeds = rssFeeds);
   }

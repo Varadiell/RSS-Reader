@@ -34,4 +34,8 @@ export class RssFeedEditorComponent implements OnInit {
     this.location.back();
   }
 
+  save(): void {
+    this.rssFeedService.updateRssFeed(this.rssFeed).subscribe(() => this.goBack());
+  }
+
 }
