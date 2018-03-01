@@ -3,6 +3,8 @@ import { RssFeed } from '../rssFeed';
 
 import { RssFeedService } from '../rss-feed.service';
 
+import { MaterialModule } from '../material/material.module';
+
 @Component({
   selector: 'app-rss-feeds',
   templateUrl: './rss-feeds.component.html',

@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 
 import { RssFeed } from '../rssFeed';
 
+import { MaterialModule } from '../material/material.module';
+
 import { RssFeedService } from '../rss-feed.service';
 
 @Component({

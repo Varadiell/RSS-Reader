@@ -1,13 +1,19 @@
 <div *ngIf="rssFeed">
+
   <h2>RssFeed : {{rssFeed.url}}</h2>
   <div><span>id:</span> {{rssFeed.id}}</div>
   <div><span>url:</span> {{rssFeed.url}}</div>
   <div><span>xml:</span> {{rssFeed.xml}}</div>
+
   <div>
-    <label>url:
-      <input [(ngModel)]="rssFeed.url" placeholder="url"/>
-    </label>
+    <mat-form-field>
+      <input matInput [(ngModel)]="rssFeed.url" placeholder="url"/>
+    </mat-form-field>
   </div>
+
+  <div>
+    <button mat-raised-button (click)="goBack()">Back</button>
+    <button mat-raised-button color="primary" (click)="save()">Save</button>
+  </div>
+
 </div>
-<button (click)="save()">Save</button>
-<button (click)="goBack()">Go back</button>
