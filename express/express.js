@@ -26,8 +26,11 @@ app.use(bodyParser.urlencoded({
 // Port
 app.set('port', expressConfig.port);
 
-// Angular dist folder
+// Serve angular "dist" folder
 app.use(express.static(path.join(__dirname, '../dist')));
+
+// Serve express "public" folder
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 // SQLite3 initialization
 rootRequire('express/functions/sqliteInit');
