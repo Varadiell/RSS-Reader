@@ -9,7 +9,9 @@
     </mat-form-field>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button color="primary" (click)="addRssFeed(rssFeedUrl.value); rssFeedUrl.value=''">Add</button>
+    <button mat-raised-button color="primary" (click)="addRssFeed(rssFeedUrl.value); rssFeedUrl.value=''">
+      <fa name="fas fa-plus"></fa> Add
+    </button>
   </mat-card-actions>
 </mat-card>
 
@@ -24,10 +26,16 @@
         <mat-divider></mat-divider>
         <h4 mat-line><a routerLink="/rssFeed/{{rssFeed.id}}">{{rssFeed.id}}</a></h4>
         <p mat-line>{{rssFeed.url}}</p>
-        <button mat-raised-button [matMenuTriggerFor]="menu" class="float-right">Options</button>
+        <button mat-raised-button [matMenuTriggerFor]="menu" class="float-right">
+          <fa name="fas fa-ellipsis-v"></fa>
+        </button>
         <mat-menu #menu="matMenu">
-          <a mat-menu-item routerLink="/rssFeed/{{rssFeed.id}}">Edit</a>
-          <button mat-menu-item (click)="deleteRssFeed(rssFeed)">Delete</button>
+          <a mat-menu-item routerLink="/rssFeed/{{rssFeed.id}}">
+            <fa name="fas fa-edit"></fa> Edit
+          </a>
+          <button mat-menu-item (click)="deleteRssFeed(rssFeed)">
+            <fa name="fas fa-trash"></fa> Delete
+          </button>
         </mat-menu>
       </mat-list-item>
     </mat-list>
