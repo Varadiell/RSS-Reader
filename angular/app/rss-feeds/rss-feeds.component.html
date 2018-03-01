@@ -1,26 +1,5 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>RssFeeds</mat-card-title>
-    <mat-card-subtitle>List of all your RSS feeds being watched.</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <ul>
-      <li *ngFor="let rssFeed of rssFeeds">
-        <a routerLink="/rssFeed/{{rssFeed.id}}">
-          {{rssFeed.url}}
-        </a>
-        <button mat-raised-button [matMenuTriggerFor]="menu">Options</button>
-        <mat-menu #menu="matMenu">
-          <a mat-menu-item routerLink="/rssFeed/{{rssFeed.id}}">Edit</a>
-          <button mat-menu-item (click)="deleteRssFeed(rssFeed)">Delete</button>
-        </mat-menu>
-      </li>
-    </ul>
-  </mat-card-content>
-</mat-card>
-
-<mat-card>
-  <mat-card-header>
     <mat-card-title>New RssFeed</mat-card-title>
     <mat-card-subtitle>Add a new RSS feed to watch.</mat-card-subtitle>
   </mat-card-header>
@@ -32,4 +11,25 @@
   <mat-card-actions>
     <button mat-raised-button color="primary" (click)="addRssFeed(rssFeedUrl.value); rssFeedUrl.value=''">Add</button>
   </mat-card-actions>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>RssFeeds</mat-card-title>
+    <mat-card-subtitle>List of all your RSS feeds being watched.</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngFor="let rssFeed of rssFeeds">
+        <mat-divider></mat-divider>
+        <h4 mat-line><a routerLink="/rssFeed/{{rssFeed.id}}">{{rssFeed.id}}</a></h4>
+        <p mat-line>{{rssFeed.url}}</p>
+        <button mat-raised-button [matMenuTriggerFor]="menu" class="float-right">Options</button>
+        <mat-menu #menu="matMenu">
+          <a mat-menu-item routerLink="/rssFeed/{{rssFeed.id}}">Edit</a>
+          <button mat-menu-item (click)="deleteRssFeed(rssFeed)">Delete</button>
+        </mat-menu>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
 </mat-card>
