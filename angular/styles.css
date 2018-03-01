@@ -4,6 +4,6 @@ mat-form-field {
   width: 100%;
 }
 
-.float-right {
-  float: right;
+.btn-sm {
+  min-width: 0 !important;
 }
