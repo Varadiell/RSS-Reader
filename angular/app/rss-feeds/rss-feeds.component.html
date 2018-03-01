@@ -2,9 +2,13 @@
 <ul>
   <li *ngFor="let rssFeed of rssFeeds">
     <a routerLink="/rssFeed/{{rssFeed.id}}">
-      {{rssFeed.id}} {{rssFeed.url}}
+      {{rssFeed.url}}
     </a>
-    <button mat-raised-button color="warn" (click)="deleteRssFeed(rssFeed)">Delete</button>
+    <button mat-raised-button [matMenuTriggerFor]="menu">Options</button>
+    <mat-menu #menu="matMenu">
+      <a mat-menu-item routerLink="/rssFeed/{{rssFeed.id}}">Edit</a>
+      <button mat-menu-item (click)="deleteRssFeed(rssFeed)">Delete</button>
+    </mat-menu>
   </li>
 </ul>
 
