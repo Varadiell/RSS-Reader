@@ -10,6 +10,7 @@
 
 #SQLite3
 data.sqlite
+data.sqlite-journal
 
 # Dependencies
 node_modules
