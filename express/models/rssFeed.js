@@ -7,28 +7,25 @@ const bookshelf = rootRequire('express/config/bookshelf');
 const RssFeed = bookshelf.Model.extend({
   'tableName' : 'rssFeeds'
 }, {
-  'create' : function(data, options){
-    return this.forge(data).save(null, options);
+  'create' : function(rssFeed){
+    return this.forge(rssFeed).save();
   },
-  'destroy' : function(options){
-    return this.forge({[this.prototype.idAttribute] : options.id}).destroy(options);
+  'destroy' : function(id){
+    return this.forge({'id' : id}).destroy();
   },
-  'findAll' : function(filter, options){
-    return this.forge().where(filter).fetchAll(options);
+  'findAll' : function(filter){
+    return this.forge(filter).fetchAll();
   },
-  'findById' : function(id, options){
-    return this.findOne({[this.prototype.idAttribute] : id}, options);
+  'findById' : function(id){
+    return this.forge({'id' : id}).fetch();
   },
-  'findByUrl' : function(url){
-    return this.forge().query({'where' : {'url' : url}}).fetch();
+  'findOne' : function(query){
+    return this.forge(query).fetch();
   },
-  'findOne' : function(query, options){
-    return this.forge(query).fetch(options);
-  },
-  'update' : function(data, options){
-    const opts = Object.assign({'patch' : true, 'require' : true}, options);
-    return this.forge({[this.prototype.idAttribute] : opts.id}).fetch(options).then(function(model){
-      return model ? model.save(data, options) : undefined;
+  'update' : function(id, data){
+    const options = {'patch' : true, 'require' : true};
+    return this.findById(id).then(function(rssFeed){
+      return rssFeed ? rssFeed.save(data, options) : undefined;
     });
   }
 });

@@ -6,7 +6,7 @@ const RssFeed = rootRequire('express/models/rssFeed');
 // Create
 exports.create = function(req, res){
   RssFeed.create({
-    'url' : 'https://www.judgehype.com/nouvelles.xml'
+    'url' : req.body.url
   }).then(function(rssFeed){
     res.json(rssFeed);
   });
@@ -19,17 +19,23 @@ exports.get = function(req, res){
 
 // GetAll
 exports.getAll = function(req, res){
-  RssFeed.findAll({}).then(function(rssFeeds){
+  RssFeed.findAll().then(function(rssFeeds){
     res.json(rssFeeds);
   });
 };
 
 // Update
 exports.update = function(req, res){
-  res.json();
+  RssFeed.update(req.itemRssFeed.id, {
+    'url' : req.body.url
+  }).then(function(rssFeed){
+    res.json(rssFeed);
+  });
 };
 
 // Delete
 exports.delete = function(req, res){
-  res.json();
+  RssFeed.destroy(req.itemRssFeed.id).then(function(){
+    res.json();
+  });
 };
