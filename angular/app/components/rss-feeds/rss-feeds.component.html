@@ -24,7 +24,7 @@
     <mat-list>
       <mat-list-item *ngFor="let rssFeed of rssFeeds">
         <mat-divider></mat-divider>
-        <h4 mat-line><a routerLink="/rssFeed/{{rssFeed.id}}">{{rssFeed.id}}</a></h4>
+        <h4 mat-line><a routerLink="/rssFeed/{{rssFeed.id}}/news">{{rssFeed.id}}</a></h4>
         <p mat-line>{{rssFeed.url}}</p>
         <button mat-raised-button [matMenuTriggerFor]="menu" class="btn-sm">
           <fa name="fas fa-ellipsis-v"></fa>

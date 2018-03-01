@@ -1,8 +1,9 @@
 // Components
 import { AppComponent } from '@components/app/app.component';
-import { DashboardComponent } from '@components/dashboard/dashboard.component';
+import { NewsViewerComponent } from '@components/news-viewer/news-viewer.component';
 import { RssFeedEditorComponent } from '@components/rss-feed-editor/rss-feed-editor.component';
 import { RssFeedsComponent } from '@components/rss-feeds/rss-feeds.component';
+import { RssNewsComponent } from '@components/rss-news/rss-news.component';
 
 // Modules
 import { HttpClientModule } from '@angular/common/http';
@@ -23,9 +24,10 @@ import { RssFeedService } from '@services/rss-feed/rss-feed.service';
   ],
   declarations: [
     AppComponent,
-    DashboardComponent,
     RssFeedEditorComponent,
-    RssFeedsComponent
+    RssFeedsComponent,
+    RssNewsComponent,
+    NewsViewerComponent
   ],
   imports: [
     AppRoutingModule,
