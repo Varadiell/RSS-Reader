@@ -2,11 +2,11 @@ import { Location } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { RssFeed } from '../rssFeed';
+import { RssFeed } from '@models/rssFeed/rssFeed';
 
-import { MaterialModule } from '../material/material.module';
+import { MaterialModule } from '@modules/material/material.module';
 
-import { RssFeedService } from '../rss-feed.service';
+import { RssFeedService } from '@services/rss-feed/rss-feed.service';
 
 @Component({
   selector: 'app-rss-feed-editor',

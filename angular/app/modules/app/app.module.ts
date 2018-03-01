@@ -1,8 +1,8 @@
 // Components
-import { AppComponent } from './app.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { RssFeedEditorComponent } from './rss-feed-editor/rss-feed-editor.component';
-import { RssFeedsComponent } from './rss-feeds/rss-feeds.component';
+import { AppComponent } from '@components/app/app.component';
+import { DashboardComponent } from '@components/dashboard/dashboard.component';
+import { RssFeedEditorComponent } from '@components/rss-feed-editor/rss-feed-editor.component';
+import { RssFeedsComponent } from '@components/rss-feeds/rss-feeds.component';
 
 // Modules
 import { HttpClientModule } from '@angular/common/http';
@@ -10,12 +10,12 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRoutingModule } from './app-routing.module';
-import { MaterialModule } from './material/material.module';
+import { AppRoutingModule } from '@modules/app-routing/app-routing.module';
+import { MaterialModule } from '@modules/material/material.module';
 
 // Services
-import { LoggerService } from './logger.service';
-import { RssFeedService } from './rss-feed.service';
+import { LoggerService } from '@services/logger/logger.service';
+import { RssFeedService } from '@services/rss-feed/rss-feed.service';
 
 @NgModule({
   bootstrap: [

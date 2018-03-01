@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LoggerService } from './logger.service';
-import { RSSFEEDS } from './mock-rssFeeds';
-import { RssFeed } from './rssFeed';
+
+import { RssFeed } from '@models/rssFeed/rssFeed';
+
+import { LoggerService } from '@services/logger/logger.service';
 
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';

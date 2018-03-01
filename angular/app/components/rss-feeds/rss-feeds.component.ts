@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { RssFeed } from '../rssFeed';
 
-import { RssFeedService } from '../rss-feed.service';
+import { RssFeed } from '@models/rssFeed/rssFeed';
 
-import { MaterialModule } from '../material/material.module';
+import { RssFeedService } from '@services/rss-feed/rss-feed.service';
+
+import { MaterialModule } from '@modules/material/material.module';
 
 @Component({
   selector: 'app-rss-feeds',

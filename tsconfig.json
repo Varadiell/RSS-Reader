@@ -1,6 +1,15 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl" : "angular",
+    "paths" : {
+      "@app/*" : ["app/*"],
+      "@environments/*" : ["environments/*"],
+      "@components/*" : ["app/components/*"],
+      "@models/*" : ["app/models/*"],
+      "@modules/*" : ["app/modules/*"],
+      "@services/*" : ["app/services/*"]
+    },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,

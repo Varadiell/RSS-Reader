@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { RssFeedService } from '../rss-feed.service';
-import { RssFeed } from '../rssFeed';
+
+import { RssFeed } from '@models/rssFeed/rssFeed';
+
+import { RssFeedService } from '@services/rss-feed/rss-feed.service';
 
 @Component({
   selector: 'app-dashboard',
