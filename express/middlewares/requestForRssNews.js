@@ -16,7 +16,8 @@ module.exports = function(){
     // Get request with an adapted requester
     requester.get(url, function(requestResponse){
       // Invalid content type
-      if(requestResponse.headers['content-type'] !== 'application/xml') return next(errorHandler.newError(415, 'Invalid content type.'));
+      if(requestResponse.headers['content-type'] !== 'application/xml' && requestResponse.headers['content-type'] !== 'text/xml')
+        return next(errorHandler.newError(415, 'Invalid content type.'));
       // Service unavailable
       if(requestResponse.statusCode !== 200)
         return next(errorHandler.newError(503, `Service unavailable : responded with status ${requestResponse.statusCode}.`));
