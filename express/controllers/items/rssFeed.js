@@ -15,7 +15,7 @@ exports.get = function(req, res){
 
 // GetAll
 exports.getAll = function(req, res){
-  RssFeed.findAll().then(function(listRssFeeds){
+  RssFeed.findAll({}).then(function(listRssFeeds){
     res.json(listRssFeeds);
   });
 };

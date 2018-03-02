@@ -8,7 +8,7 @@ const RssFeed = bookshelf.Model.extend({
   'tableName' : 'rssFeeds'
 }, {
   'create' : function(rssFeed){
-    return this.where(rssFeed).save();
+    return this.forge(rssFeed).save();
   },
   'destroy' : function(id){
     return this.where({'id' : id}).destroy();
