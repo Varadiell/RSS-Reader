@@ -4,6 +4,7 @@ const rssNewsController = rootRequire('express/controllers/items/rssNews');
 const requestForRssNews = rootRequire('express/middlewares/requestForRssNews');
 const parseXmlResponse = rootRequire('express/middlewares/parseXmlResponse');
 const saveRssNews = rootRequire('express/middlewares/saveRssNews');
+const updateRssFeed = rootRequire('express/middlewares/updateRssFeed');
 
 
 
@@ -21,6 +22,7 @@ module.exports = function(router){
     '/api/rssFeed/:rssFeedId/news',
     requestForRssNews(),
     parseXmlResponse(),
+    updateRssFeed(),
     saveRssNews(),
     rssNewsController.getAll
   );
