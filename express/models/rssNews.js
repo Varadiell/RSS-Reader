@@ -22,6 +22,9 @@ const RssNews = bookshelf.Model.extend({
   'findByRssFeedId' : function(id){
     return this.forge({'rssFeedId' : id}).fetch();
   },
+  'findByLink' : function(link){
+    return this.forge({'link' : link}).fetch();
+  },
   'findOne' : function(query){
     return this.forge(query).fetch();
   }

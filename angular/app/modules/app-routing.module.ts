@@ -8,7 +8,7 @@ import { RssNewsComponent } from '@components/rss-news/rss-news.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/rssFeeds', pathMatch: 'full'},
-  {path: 'news/:id', component: NewsViewerComponent},
+  {path: 'rssNews/:id', component: NewsViewerComponent},
   {path: 'rssFeed/:id', component: RssFeedEditorComponent},
   {path: 'rssFeed/:id/news', component: RssNewsComponent},
   {path: 'rssFeeds', component: RssFeedsComponent}
