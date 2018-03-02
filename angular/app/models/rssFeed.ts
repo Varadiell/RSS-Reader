@@ -5,6 +5,7 @@ export class RssFeed {
   description: string;
   image: string;
   link: string;
+  title: string;
   url: string;
 
 }

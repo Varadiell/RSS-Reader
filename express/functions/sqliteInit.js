@@ -10,6 +10,7 @@ knex.schema.hasTable('rssFeeds').then(function(exists){
     table.string('description', 1000);
     table.string('image', 250);
     table.string('link', 250);
+    table.string('title', 250);
     table.string('url', 250);
   }).then(function(){
     console.info('Table "rssFeeds" created.');
