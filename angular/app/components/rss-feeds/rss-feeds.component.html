@@ -25,17 +25,17 @@
   <mat-divider></mat-divider>
   <mat-card-content>
     <mat-list>
-      <mat-list-item *ngFor="let rssFeed of rssFeeds">
-        <h4 mat-line><a routerLink="/rssFeed/{{rssFeed.id}}/news">{{rssFeed.id}}</a></h4>
-        <p mat-line>{{rssFeed.url}}</p>
+      <mat-list-item *ngFor="let itemRssFeed of listRssFeeds">
+        <h4 mat-line><a routerLink="/rssFeed/{{itemRssFeed.id}}/news">{{itemRssFeed.id}}</a></h4>
+        <p mat-line>{{itemRssFeed.url}}</p>
         <button mat-raised-button [matMenuTriggerFor]="menu" class="btn-sm">
           <fa name="fas fa-ellipsis-v"></fa>
         </button>
         <mat-menu #menu="matMenu">
-          <a mat-menu-item routerLink="/rssFeed/{{rssFeed.id}}">
+          <a mat-menu-item routerLink="/rssFeed/{{itemRssFeed.id}}">
             <fa name="fas fa-edit"></fa> Edit
           </a>
-          <button mat-menu-item (click)="deleteRssFeed(rssFeed)">
+          <button mat-menu-item (click)="deleteRssFeed(itemRssFeed.id)">
             <fa name="fas fa-trash"></fa> Delete
           </button>
         </mat-menu>

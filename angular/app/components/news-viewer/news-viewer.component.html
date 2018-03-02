@@ -1,3 +1,5 @@
-<p>
-  news-viewer works!
-</p>
+<p>news-viewer works!</p>
+
+<div *ngIf="rssNews">
+  <p>{{rssNews.title}}</p>
+</div>

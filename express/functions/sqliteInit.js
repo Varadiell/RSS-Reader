@@ -8,7 +8,6 @@ knex.schema.hasTable('rssFeeds').then(function(exists){
   return knex.schema.createTable('rssFeeds', function(table){
     table.increments('id').primary();
     table.string('url', 250);
-    table.text('xml', 'longtext');
   }).then(function(){
     console.info('Table "rssFeeds" created.');
   }).catch(function(err){

@@ -2,9 +2,9 @@ import { Location } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { RssFeed } from '@models/rssFeed/rssFeed';
+import { RssFeed } from '@models/rssFeed';
 
-import { MaterialModule } from '@modules/material/material.module';
+import { MaterialModule } from '@modules/material.module';
 
 import { RssFeedService } from '@services/rss-feed/rss-feed.service';
 

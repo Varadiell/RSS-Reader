@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { RssFeed } from '@models/rssFeed/rssFeed';
+import { RssFeed } from '@models/rssFeed';
+import { RssNews } from '@models/rssNews';
 
-import { MaterialModule } from '@modules/material/material.module';
+import { MaterialModule } from '@modules/material.module';
 
 import { RssFeedService } from '@services/rss-feed/rss-feed.service';
+import { RssNewsService } from '@services/rss-news/rss-news.service';
 
 @Component({
   selector: 'app-rss-news',
@@ -15,10 +17,12 @@ import { RssFeedService } from '@services/rss-feed/rss-feed.service';
 export class RssNewsComponent implements OnInit {
 
   rssFeed: RssFeed;
+  listRssNews: RssNews[];
 
   constructor(
     private route: ActivatedRoute,
-    private rssFeedService: RssFeedService
+    private rssFeedService: RssFeedService,
+    private rssNewsService: RssNewsService
   ) { }
 
   ngOnInit() {
@@ -28,6 +32,11 @@ export class RssNewsComponent implements OnInit {
   getRssFeed(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.rssFeedService.getRssFeed(id).subscribe((rssFeed) => this.rssFeed = rssFeed);
+  }
+
+  getListRssNews(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.rssNewsService.getListRssNews(id).subscribe((listRssNews) => this.listRssNews = listRssNews);
   }
 
 }

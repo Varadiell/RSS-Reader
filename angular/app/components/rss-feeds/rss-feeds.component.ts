@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { RssFeed } from '@models/rssFeed/rssFeed';
+import { RssFeed } from '@models/rssFeed';
 
 import { RssFeedService } from '@services/rss-feed/rss-feed.service';
 
-import { MaterialModule } from '@modules/material/material.module';
+import { MaterialModule } from '@modules/material.module';
 
 @Component({
   selector: 'app-rss-feeds',
@@ -13,28 +13,28 @@ import { MaterialModule } from '@modules/material/material.module';
 })
 export class RssFeedsComponent implements OnInit {
 
-  rssFeeds: RssFeed[];
+  listRssFeeds: RssFeed[];
 
   constructor(private rssFeedService: RssFeedService) { }
 
   ngOnInit() {
-    this.getRssFeeds();
+    this.getListRssFeeds();
   }
 
   addRssFeed(url: string): void {
     url = url.trim();
     if (!url) { return; }
     this.rssFeedService.addRssFeed({url} as RssFeed)
-    .subscribe((rssFeed) => this.rssFeeds.push(rssFeed));
+    .subscribe((rssFeed) => this.listRssFeeds.push(rssFeed));
   }
 
-  deleteRssFeed(rssFeed: RssFeed): void {
-    this.rssFeeds = this.rssFeeds.filter((itemRssFeed) => itemRssFeed !== rssFeed);
-    this.rssFeedService.deleteRssFeed(rssFeed).subscribe();
+  deleteRssFeed(id: number): void {
+    this.listRssFeeds = this.listRssFeeds.filter((itemRssFeed) => itemRssFeed.id !== id);
+    this.rssFeedService.deleteRssFeed(id).subscribe();
   }
 
-  getRssFeeds(): void {
-    this.rssFeedService.getRssFeeds().subscribe((rssFeeds) => this.rssFeeds = rssFeeds);
+  getListRssFeeds(): void {
+    this.rssFeedService.getListRssFeeds().subscribe((listRssFeeds) => this.listRssFeeds = listRssFeeds);
   }
 
 }

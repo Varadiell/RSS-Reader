@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { RssFeed } from '@models/rssFeed/rssFeed';
+import { RssFeed } from '@models/rssFeed';
 
 import { LoggerService } from '@services/logger/logger.service';
 
@@ -29,26 +29,26 @@ export class RssFeedService {
     );
   }
 
-  deleteRssFeed(rssFeed: RssFeed): Observable<RssFeed> {
-    return this.http.delete<RssFeed>(`api/rssFeed/${rssFeed.id}`)
+  deleteRssFeed(id: number): Observable<RssFeed> {
+    return this.http.delete<RssFeed>(`api/rssFeed/${id}`)
     .pipe(
-      tap((_) => this.logger.log(`deleted rssFeed id: ${rssFeed.id}`)),
-      catchError(this.handleError<RssFeed>(`deleteRssFeed(${rssFeed.id})`))
+      tap(() => this.logger.log(`deleted rssFeed id: ${id}`)),
+      catchError(this.handleError<RssFeed>(`deleteRssFeed(${id})`))
     );
   }
 
-  getRssFeeds(): Observable<RssFeed[]> {
+  getListRssFeeds(): Observable<RssFeed[]> {
     return this.http.get<RssFeed[]>('api/rssFeeds')
     .pipe(
-      tap((rssFeeds) => this.logger.log('fetched rssFeeds')),
-      catchError(this.handleError('getRssFeeds()', []))
+      tap(() => this.logger.log('fetched listRssFeeds')),
+      catchError(this.handleError('getListRssFeeds()', []))
     );
   }
 
   getRssFeed(id: number): Observable<RssFeed> {
     return this.http.get<RssFeed>(`api/rssFeed/${id}`)
     .pipe(
-      tap((_) => this.logger.log(`fetched rssFeed id: ${id}`)),
+      tap(() => this.logger.log(`fetched rssFeed id: ${id}`)),
       catchError(this.handleError<RssFeed>(`getRssFeed(${id})`))
     );
   }
@@ -56,7 +56,7 @@ export class RssFeedService {
   updateRssFeed(rssFeed: RssFeed): Observable<any> {
     return this.http.put(`api/rssFeed/${rssFeed.id}`, rssFeed, httpOptions)
     .pipe(
-      tap((_) => this.logger.log(`updated rssFeed id: ${rssFeed.id}`)),
+      tap(() => this.logger.log(`updated rssFeed id: ${rssFeed.id}`)),
       catchError(this.handleError<any>('updateRssFeed(rssFeed)'))
     );
   }

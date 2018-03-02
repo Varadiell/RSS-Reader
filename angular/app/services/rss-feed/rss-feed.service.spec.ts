@@ -1,6 +1,6 @@
 import { inject, TestBed } from '@angular/core/testing';
 
-import { RssFeedService } from '@services/rss-feed/rss-feed.service';
+import { RssFeedService } from './rss-feed/rss-feed.service';
 
 describe('RssFeedService', () => {
   beforeEach(() => {

@@ -11,12 +11,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRoutingModule } from '@modules/app-routing/app-routing.module';
-import { MaterialModule } from '@modules/material/material.module';
+import { AppRoutingModule } from '@modules/app-routing.module';
+import { MaterialModule } from '@modules/material.module';
 
 // Services
 import { LoggerService } from '@services/logger/logger.service';
 import { RssFeedService } from '@services/rss-feed/rss-feed.service';
+import { RssNewsService } from '@services/rss-news/rss-news.service';
 
 @NgModule({
   bootstrap: [
@@ -39,7 +40,8 @@ import { RssFeedService } from '@services/rss-feed/rss-feed.service';
   ],
   providers: [
     LoggerService,
-    RssFeedService
+    RssFeedService,
+    RssNewsService
   ]
 })
 
