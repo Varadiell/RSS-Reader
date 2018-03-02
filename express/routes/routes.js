@@ -10,6 +10,8 @@ rootRequire('express/routes/params')(router);
 // === ITEMS
 // RssFeed
 rootRequire('express/routes/items/rssFeed')(router);
+// RssNews
+rootRequire('express/routes/items/rssNews')(router);
 
 // === INDEX (GET redirect)
 rootRequire('express/routes/index')(router);
