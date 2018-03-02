@@ -1,11 +1,23 @@
 <div *ngIf="rssFeed">
   <mat-card>
     <mat-card-header>
-      <mat-card-title>RssFeed : {{rssFeed.id}}</mat-card-title>
-      <mat-card-subtitle>{{rssFeed.url}}</mat-card-subtitle>
+      <mat-card-title>RssFeed : {{rssFeed.title}}</mat-card-title>
+      <mat-card-subtitle>URL : {{rssFeed.url}}</mat-card-subtitle>
     </mat-card-header>
     <mat-divider></mat-divider>
     <mat-card-content>
+      <p class="padding-top-15">
+        Description : {{rssFeed.description}}
+      </p>
+      <mat-divider></mat-divider>
+      <p class="padding-top-15">
+        Image : {{rssFeed.image}}
+      </p>
+      <mat-divider></mat-divider>
+      <p class="padding-top-15">
+        Link : {{rssFeed.link}}
+      </p>
+      <mat-divider></mat-divider>
       <mat-form-field>
         <input matInput [(ngModel)]="rssFeed.url" placeholder="URL"/>
       </mat-form-field>

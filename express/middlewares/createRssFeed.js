@@ -5,10 +5,12 @@ const errorHandler = rootRequire('express/functions/errorHandler');
 
 
 
-// UpdateRssFeed
+// CreateRssFeed
 module.exports = function(){
   return function(req, res, next){
-    RssFeed.update(req.itemRssFeed.id, req.updatedRssFeed).then((rssFeed) => {
+    RssFeed.create({
+      'url' : req.body.url
+    }).then((rssFeed) => {
       req.itemRssFeed = rssFeed;
       next();
     }).catch((err) => {

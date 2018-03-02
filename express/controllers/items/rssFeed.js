@@ -5,11 +5,7 @@ const RssFeed = rootRequire('express/models/rssFeed');
 
 // Create
 exports.create = function(req, res){
-  RssFeed.create({
-    'url' : req.body.url
-  }).then(function(rssFeed){
-    res.json(rssFeed);
-  });
+  res.json(req.itemRssFeed);
 };
 
 // Get

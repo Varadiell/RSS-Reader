@@ -1,5 +1,11 @@
 // RssFeed controller
 const rssFeedController = rootRequire('express/controllers/items/rssFeed');
+// Middlewares
+const createRssFeed = rootRequire('express/middlewares/createRssFeed');
+const parseXmlResponse = rootRequire('express/middlewares/parseXmlResponse');
+const requestForRssNews = rootRequire('express/middlewares/requestForRssNews');
+const saveRssNews = rootRequire('express/middlewares/saveRssNews');
+const updateRssFeed = rootRequire('express/middlewares/updateRssFeed');
 
 
 
@@ -9,6 +15,11 @@ module.exports = function(router){
   // Create
   router.post(
     '/api/rssFeed',
+    createRssFeed(),
+    requestForRssNews(),
+    parseXmlResponse(),
+    updateRssFeed(),
+    saveRssNews(),
     rssFeedController.create
   );
 

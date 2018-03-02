@@ -11,10 +11,8 @@ module.exports = function(){
   return function(req, res, next){
     // RssFeed url to request
     const url = req.itemRssFeed.attributes.url;
-    // Http or Https request
-    const requester = getRequester(url);
-    // Get request with an adapted requester
-    requester.get(url, function(requestResponse){
+    // Get request with an adapted requester (Http or Https)
+    getRequester(url).get(url, function(requestResponse){
       // Invalid content type
       if(requestResponse.headers['content-type'] !== 'application/xml' && requestResponse.headers['content-type'] !== 'text/xml')
         return next(errorHandler.newError(415, 'Invalid content type.'));

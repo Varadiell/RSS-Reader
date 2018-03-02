@@ -1,12 +1,12 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 body {
-  background-color: #DDDDDD;
+  background-color: #DDDDDD !important;
 }
 
 mat-form-field {
   margin-top: 20px !important;
-  width: 100%;
+  width: 100% !important;
 }
 
 .btn-sm {
@@ -14,5 +14,9 @@ mat-form-field {
 }
 
 .margin-top-10 {
-  margin-top: 10px;
+  margin-top: 10px !important;
+}
+
+.padding-top-15 {
+  padding-top: 15px !important;
 }

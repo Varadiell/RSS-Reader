@@ -1,8 +1,8 @@
 // RssNews controller
 const rssNewsController = rootRequire('express/controllers/items/rssNews');
 // Middlewares
-const requestForRssNews = rootRequire('express/middlewares/requestForRssNews');
 const parseXmlResponse = rootRequire('express/middlewares/parseXmlResponse');
+const requestForRssNews = rootRequire('express/middlewares/requestForRssNews');
 const saveRssNews = rootRequire('express/middlewares/saveRssNews');
 const updateRssFeed = rootRequire('express/middlewares/updateRssFeed');
 
