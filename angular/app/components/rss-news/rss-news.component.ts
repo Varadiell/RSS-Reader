@@ -27,6 +27,7 @@ export class RssNewsComponent implements OnInit {
 
   ngOnInit() {
     this.getRssFeed();
+    this.getListRssNews();
   }
 
   getRssFeed(): void {
