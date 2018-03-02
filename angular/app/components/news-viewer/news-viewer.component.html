@@ -1,5 +1,20 @@
-<p>news-viewer works!</p>
-
 <div *ngIf="rssNews">
-  <p>{{rssNews.title}}</p>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>RssNews : {{rssNews.title}}</mat-card-title>
+      <mat-card-subtitle>Link : {{rssNews.link}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <p class="padding-top-15">
+        {{rssNews.pubDate}} : {{rssNews.description}}
+      </p>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-card-actions>
+      <button mat-raised-button (click)="goBack()">
+        <fa name="fas fa-arrow-left"></fa> Back
+      </button>
+    </mat-card-actions>
+  </mat-card>
 </div>

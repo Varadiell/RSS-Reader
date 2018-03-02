@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
@@ -17,6 +18,7 @@ export class NewsViewerComponent implements OnInit {
   rssNews: RssNews;
 
   constructor(
+    private location: Location,
     private route: ActivatedRoute,
     private rssNewsService: RssNewsService
   ) { }
@@ -28,6 +30,10 @@ export class NewsViewerComponent implements OnInit {
   getRssNews(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.rssNewsService.getRssNews(id).subscribe((rssNews) => this.rssNews = rssNews);
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }
