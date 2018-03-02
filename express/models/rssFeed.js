@@ -8,19 +8,19 @@ const RssFeed = bookshelf.Model.extend({
   'tableName' : 'rssFeeds'
 }, {
   'create' : function(rssFeed){
-    return this.forge(rssFeed).save();
+    return this.where(rssFeed).save();
   },
   'destroy' : function(id){
-    return this.forge({'id' : id}).destroy();
+    return this.where({'id' : id}).destroy();
   },
   'findAll' : function(filter){
-    return this.forge(filter).fetchAll();
+    return this.where(filter).fetchAll();
   },
   'findById' : function(id){
-    return this.forge({'id' : id}).fetch();
+    return this.where({'id' : id}).fetch();
   },
   'findOne' : function(query){
-    return this.forge(query).fetch();
+    return this.where(query).fetch();
   },
   'update' : function(id, data){
     const options = {'patch' : true, 'require' : true};
