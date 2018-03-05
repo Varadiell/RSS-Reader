@@ -4,7 +4,7 @@
     <mat-card-subtitle>{{rssFeed.url}}</mat-card-subtitle>
   </mat-card-header>
   <mat-divider></mat-divider>
-  <mat-progress-bar [hidden]="!isLoadingRssNews" mode="query"></mat-progress-bar>
+  <mat-progress-bar [hidden]="!isLoadingRssNews" mode="query" class="margin-bottom-top-20"></mat-progress-bar>
   <mat-card-content [hidden]="isLoadingRssNews">
     <mat-list>
       <mat-list-item *ngFor="let itemRssNews of listRssNews">

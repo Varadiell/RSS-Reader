@@ -4,7 +4,7 @@
     <mat-card-subtitle>Add a new RSS feed to watch.</mat-card-subtitle>
   </mat-card-header>
   <mat-divider></mat-divider>
-  <mat-progress-bar [hidden]="!isLoadingAddRssFeed" mode="query"></mat-progress-bar>
+  <mat-progress-bar [hidden]="!isLoadingAddRssFeed" mode="query" class="margin-top-20"></mat-progress-bar>
   <mat-card-content [hidden]="isLoadingAddRssFeed">
     <mat-form-field>
       <input matInput #rssFeedUrl placeholder="URL"/>
@@ -24,7 +24,7 @@
     <mat-card-subtitle>List of all your RSS feeds being watched.</mat-card-subtitle>
   </mat-card-header>
   <mat-divider></mat-divider>
-  <mat-progress-bar [hidden]="!isLoadingListRssFeeds" mode="query"></mat-progress-bar>
+  <mat-progress-bar [hidden]="!isLoadingListRssFeeds" mode="query" class="margin-bottom-top-20"></mat-progress-bar>
   <mat-card-content [hidden]="isLoadingListRssFeeds">
     <mat-list>
       <mat-list-item *ngFor="let itemRssFeed of listRssFeeds">
