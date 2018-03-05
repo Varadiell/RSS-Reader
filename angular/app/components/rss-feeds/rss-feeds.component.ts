@@ -33,7 +33,7 @@ export class RssFeedsComponent implements OnInit {
     this.rssFeedService.addRssFeed({url} as RssFeed)
     .subscribe((rssFeed) => {
       this.isLoadingAddRssFeed = false;
-      this.listRssFeeds.push(rssFeed);
+      if (rssFeed) { this.listRssFeeds.push(rssFeed); }
     });
   }
 
