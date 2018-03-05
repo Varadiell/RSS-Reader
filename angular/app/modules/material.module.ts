@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
@@ -19,7 +20,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     MatFormFieldModule,
     MatInputModule,
     MatListModule,
-    MatMenuModule
+    MatMenuModule,
+    MatProgressBarModule
   ],
   imports: [
     CommonModule

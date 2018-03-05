@@ -1,23 +1,22 @@
-<div *ngIf="rssFeed">
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>News of RssFeed : {{rssFeed.title}}</mat-card-title>
-      <mat-card-subtitle>{{rssFeed.url}}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-divider></mat-divider>
-    <mat-card-content>
-      <mat-list>
-        <mat-list-item *ngFor="let itemRssNews of listRssNews">
-          <h4 mat-line><a routerLink="/rssNews/{{itemRssNews.id}}">{{itemRssNews.title}}</a></h4>
-          <p mat-line>{{itemRssNews.pubDate}} : {{itemRssNews.description}}</p>
-        </mat-list-item>
-      </mat-list>
-    </mat-card-content>
-    <mat-divider></mat-divider>
-    <mat-card-actions>
-      <a mat-raised-button routerLink="/rssFeeds">
-        <fa name="fas fa-arrow-left"></fa> RssFeeds
-      </a>
-    </mat-card-actions>
-  </mat-card>
-</div>
+<mat-card *ngIf="rssFeed">
+  <mat-card-header>
+    <mat-card-title>News of RssFeed : {{rssFeed.title}}</mat-card-title>
+    <mat-card-subtitle>{{rssFeed.url}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-progress-bar [hidden]="!isLoadingRssNews" mode="query"></mat-progress-bar>
+  <mat-card-content [hidden]="isLoadingRssNews">
+    <mat-list>
+      <mat-list-item *ngFor="let itemRssNews of listRssNews">
+        <h4 mat-line><a routerLink="/rssNews/{{itemRssNews.id}}">{{itemRssNews.title}}</a></h4>
+        <p mat-line>{{itemRssNews.pubDate}} : {{itemRssNews.description}}</p>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+  <mat-divider></mat-divider>
+  <mat-card-actions>
+    <a mat-raised-button routerLink="/rssFeeds">
+      <fa name="fas fa-arrow-left"></fa> RssFeeds
+    </a>
+  </mat-card-actions>
+</mat-card>

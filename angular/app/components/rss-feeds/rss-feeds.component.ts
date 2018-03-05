@@ -15,17 +15,26 @@ export class RssFeedsComponent implements OnInit {
 
   listRssFeeds: RssFeed[];
 
-  constructor(private rssFeedService: RssFeedService) { }
+  isLoadingListRssFeeds = false;
+  isLoadingAddRssFeed = false;
+
+  constructor(
+    private rssFeedService: RssFeedService
+  ) { }
 
   ngOnInit() {
     this.getListRssFeeds();
   }
 
   addRssFeed(url: string): void {
+    this.isLoadingAddRssFeed = true;
     url = url.trim();
     if (!url) { return; }
     this.rssFeedService.addRssFeed({url} as RssFeed)
-    .subscribe((rssFeed) => this.listRssFeeds.push(rssFeed));
+    .subscribe((rssFeed) => {
+      this.isLoadingAddRssFeed = false;
+      this.listRssFeeds.push(rssFeed);
+    });
   }
 
   deleteRssFeed(id: number): void {
@@ -34,7 +43,11 @@ export class RssFeedsComponent implements OnInit {
   }
 
   getListRssFeeds(): void {
-    this.rssFeedService.getListRssFeeds().subscribe((listRssFeeds) => this.listRssFeeds = listRssFeeds);
+    this.isLoadingListRssFeeds = true;
+    this.rssFeedService.getListRssFeeds().subscribe((listRssFeeds) => {
+      this.isLoadingListRssFeeds = false;
+      this.listRssFeeds = listRssFeeds;
+    });
   }
 
 }

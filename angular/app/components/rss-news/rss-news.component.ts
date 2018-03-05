@@ -19,6 +19,8 @@ export class RssNewsComponent implements OnInit {
   rssFeed: RssFeed;
   listRssNews: RssNews[];
 
+  isLoadingRssNews = false;
+
   constructor(
     private route: ActivatedRoute,
     private rssFeedService: RssFeedService,
@@ -36,8 +38,12 @@ export class RssNewsComponent implements OnInit {
   }
 
   getListRssNews(): void {
+    this.isLoadingRssNews = true;
     const id = +this.route.snapshot.paramMap.get('id');
-    this.rssNewsService.getListRssNews(id).subscribe((listRssNews) => this.listRssNews = listRssNews);
+    this.rssNewsService.getListRssNews(id).subscribe((listRssNews) => {
+      this.isLoadingRssNews = false;
+      this.listRssNews = listRssNews;
+    });
   }
 
 }
