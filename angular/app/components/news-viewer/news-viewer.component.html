@@ -7,7 +7,7 @@
     <mat-divider></mat-divider>
     <mat-card-content>
       <p class="padding-top-15">
-        {{rssNews.pubDate}} : {{rssNews.description}}
+        <span class="bold">{{rssNews.pubDate | date:'short'}}</span> : {{rssNews.description}}
       </p>
     </mat-card-content>
     <mat-divider></mat-divider>

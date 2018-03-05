@@ -14,7 +14,7 @@ const RssNews = bookshelf.Model.extend({
     return this.where({'id' : id}).destroy();
   },
   'findAll' : function(filter){
-    return this.where(filter).fetchAll();
+    return this.where(filter).orderBy('-pubDate').fetchAll();
   },
   'findById' : function(id){
     return this.where({'id' : id}).fetch();
