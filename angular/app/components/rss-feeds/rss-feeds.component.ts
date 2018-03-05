@@ -27,9 +27,9 @@ export class RssFeedsComponent implements OnInit {
   }
 
   addRssFeed(url: string): void {
-    this.isLoadingAddRssFeed = true;
     url = url.trim();
     if (!url) { return; }
+    this.isLoadingAddRssFeed = true;
     this.rssFeedService.addRssFeed({url} as RssFeed)
     .subscribe((rssFeed) => {
       this.isLoadingAddRssFeed = false;
