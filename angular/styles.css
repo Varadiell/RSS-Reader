@@ -21,6 +21,10 @@ mat-form-field {
   min-width: 0 !important;
 }
 
+.float-right {
+  float: right !important;
+}
+
 .toolbar-fill-space {
   flex: 1 1 auto !important;
 }
