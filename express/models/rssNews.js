@@ -22,11 +22,11 @@ const RssNews = bookshelf.Model.extend({
   'findById' : function(id){
     return this.where({'id' : id}).fetch();
   },
-  'findByRssFeedId' : function(id){
-    return this.where({'rssFeedId' : id}).fetch();
-  },
   'findByLink' : function(link){
     return this.where({'link' : link}).fetch();
+  },
+  'findByRssFeedId' : function(id){
+    return this.where({'rssFeedId' : id}).fetch();
   },
   'findOne' : function(query){
     return this.where(query).fetch();

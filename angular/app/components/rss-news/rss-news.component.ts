@@ -53,4 +53,13 @@ export class RssNewsComponent implements OnInit {
     });
   }
 
+  refreshRssNews(): void {
+    this.isLoadingRssNews = true;
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.rssNewsService.refreshListRssNews(id).subscribe((listRssNews) => {
+      this.isLoadingRssNews = false;
+      this.listRssNews = listRssNews;
+    });
+  }
+
 }

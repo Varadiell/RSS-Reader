@@ -35,6 +35,13 @@ export class RssNewsService {
     );
   }
 
+  refreshListRssNews(id: number): Observable<RssNews[]> {
+    return this.http.get<RssNews[]>(`api/rssFeed/${id}/news/refresh`)
+    .pipe(
+      catchError(this.handleError('refreshListRssNews()', []))
+    );
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       this.logger.error(`Error : ${error.message}`);

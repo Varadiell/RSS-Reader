@@ -20,6 +20,12 @@ module.exports = function(router){
   // GetAll
   router.get(
     '/api/rssFeed/:rssFeedId/news',
+    rssNewsController.getAll
+  );
+
+  // Refresh
+  router.get(
+    '/api/rssFeed/:rssFeedId/news/refresh',
     requestForRssNews(),
     parseXmlResponse(),
     updateRssFeed(),
