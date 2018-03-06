@@ -4,6 +4,8 @@ const striptags = require('striptags');
 const xml2js = require('xml2js');
 // Functions
 const errorHandler = rootRequire('express/functions/errorHandler');
+// Variables
+const RSSNEWS_ADD_LIMIT = 20;
 
 
 
@@ -27,6 +29,7 @@ module.exports = function(){
       // ListRssNews (for middleware saveRssNews)
       const listRssNews = [];
       _.forEach(_.get(channel, '[0].item'), function(e){
+        if(listRssNews.length >= RSSNEWS_ADD_LIMIT) return;
         listRssNews.push({
           'rssFeedId' : req.itemRssFeed.id,
           'description' : striptags(_.get(e, 'description[0]')),
