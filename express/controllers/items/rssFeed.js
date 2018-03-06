@@ -31,7 +31,5 @@ exports.update = function(req, res){
 
 // Delete
 exports.delete = function(req, res){
-  RssFeed.destroy(req.itemRssFeed.id).then(function(){
-    res.json();
-  });
+  res.json();
 };

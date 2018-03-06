@@ -13,8 +13,8 @@ const RssNews = bookshelf.Model.extend({
   'create' : function(rssNews){
     return this.forge(rssNews).save();
   },
-  'destroy' : function(id){
-    return this.where({'id' : id}).destroy();
+  'destroyByRssFeedId' : function(rssFeedId){
+    return this.where({'rssFeedId' : rssFeedId}).destroy();
   },
   'findAll' : function(query){
     return this.where(query).orderBy('-pubDate').fetchAll();

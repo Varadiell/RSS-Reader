@@ -13,7 +13,7 @@ const RssFeed = bookshelf.Model.extend({
   'create' : function(rssFeed){
     return this.forge(rssFeed).save();
   },
-  'destroy' : function(id){
+  'destroyById' : function(id){
     return this.where({'id' : id}).destroy();
   },
   'findAll' : function(query){

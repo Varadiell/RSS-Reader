@@ -3,6 +3,8 @@ const rssFeedController = rootRequire('express/controllers/items/rssFeed');
 // Middlewares
 const canAddRssFeed = rootRequire('express/middlewares/canAddRssFeed');
 const createRssFeed = rootRequire('express/middlewares/createRssFeed');
+const deleteRssFeed = rootRequire('express/middlewares/deleteRssFeed');
+const deleteRssNewsOfRssFeed = rootRequire('express/middlewares/deleteRssNewsOfRssFeed');
 const parseXmlResponse = rootRequire('express/middlewares/parseXmlResponse');
 const requestForRssNews = rootRequire('express/middlewares/requestForRssNews');
 const saveRssNews = rootRequire('express/middlewares/saveRssNews');
@@ -46,6 +48,8 @@ module.exports = function(router){
   // Delete
   router.delete(
     '/api/rssFeed/:rssFeedId',
+    deleteRssFeed(),
+    deleteRssNewsOfRssFeed(),
     rssFeedController.delete
   );
 
