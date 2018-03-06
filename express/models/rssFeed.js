@@ -7,14 +7,17 @@ const bookshelf = rootRequire('express/config/bookshelf');
 const RssFeed = bookshelf.Model.extend({
   'tableName' : 'rssFeeds'
 }, {
+  'count' : function(query){
+    return this.where(query).count();
+  },
   'create' : function(rssFeed){
     return this.forge(rssFeed).save();
   },
   'destroy' : function(id){
     return this.where({'id' : id}).destroy();
   },
-  'findAll' : function(filter){
-    return this.where(filter).fetchAll();
+  'findAll' : function(query){
+    return this.where(query).fetchAll();
   },
   'findById' : function(id){
     return this.where({'id' : id}).fetch();

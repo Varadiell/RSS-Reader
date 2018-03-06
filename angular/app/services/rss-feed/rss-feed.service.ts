@@ -63,7 +63,7 @@ export class RssFeedService {
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      this.logger.error(`Error : ${error.message}`);
+      this.logger.error(`Error ${error.status} : ${error.statusText}`);
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
