@@ -1,6 +1,5 @@
 // Modules
 const _ = require('lodash');
-const isUrl = require('is-url');
 const http = require('http');
 const https = require('https');
 // Functions
@@ -13,8 +12,6 @@ module.exports = function(){
   return function(req, res, next){
     // RssFeed url to request
     const url = req.itemRssFeed.attributes.url;
-    // Check URL
-    if(!isUrl(url)) return next(errorHandler.newError(400, 'Invalid URL.'));
     // Get request with an adapted requester (Http or Https)
     getRequester(url).get(url, function(requestResponse){
       // Invalid content type

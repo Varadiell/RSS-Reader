@@ -22,6 +22,9 @@ const RssFeed = bookshelf.Model.extend({
   'findById' : function(id){
     return this.where({'id' : id}).fetch();
   },
+  'findByUrl' : function(url){
+    return this.where({'url' : url}).fetch();
+  },
   'findOne' : function(query){
     return this.where(query).fetch();
   },
