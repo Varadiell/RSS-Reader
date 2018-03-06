@@ -2,6 +2,18 @@
   <mat-card-header>
     <mat-card-title>News of RssFeed : {{rssFeed.title}}</mat-card-title>
     <mat-card-subtitle>{{rssFeed.url}}</mat-card-subtitle>
+    <span class="fill-horizontal-space"></span>
+    <button mat-raised-button [matMenuTriggerFor]="menu" class="btn-sm">
+      <fa name="fas fa-ellipsis-v"></fa>
+    </button>
+    <mat-menu #menu="matMenu">
+      <a mat-menu-item routerLink="/rssFeed/{{rssFeed.id}}">
+        <fa name="fas fa-edit"></fa> Edit
+      </a>
+      <button mat-menu-item (click)="deleteRssFeed(rssFeed.id)">
+        <fa name="fas fa-trash"></fa> Delete
+      </button>
+    </mat-menu>
   </mat-card-header>
   <mat-divider></mat-divider>
   <mat-progress-bar [hidden]="!isLoadingRssNews" mode="query" class="margin-bottom-top-20"></mat-progress-bar>

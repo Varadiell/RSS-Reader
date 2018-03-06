@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { RssFeed } from '@models/rssFeed';
 import { RssNews } from '@models/rssNews';
@@ -23,6 +23,7 @@ export class RssNewsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private rssFeedService: RssFeedService,
     private rssNewsService: RssNewsService
   ) { }
@@ -30,6 +31,12 @@ export class RssNewsComponent implements OnInit {
   ngOnInit() {
     this.getRssFeed();
     this.getListRssNews();
+  }
+
+  deleteRssFeed(id: number): void {
+    this.rssFeedService.deleteRssFeed(id).subscribe(() => {
+      this.router.navigate(['/rssFeeds']);
+    });
   }
 
   getRssFeed(): void {
