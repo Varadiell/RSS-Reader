@@ -1,4 +1,5 @@
 // Modules
+const _ = require('lodash');
 const http = require('http');
 const https = require('https');
 // Functions
@@ -14,7 +15,8 @@ module.exports = function(){
     // Get request with an adapted requester (Http or Https)
     getRequester(url).get(url, function(requestResponse){
       // Invalid content type
-      if(requestResponse.headers['content-type'].indexOf('xml') === -1)
+      const contentType = _.get(requestResponse, 'headers["content-type"]');
+      if(contentType && contentType.indexOf('xml') === -1)
         return next(errorHandler.newError(415, 'Invalid content type.'));
       // Service unavailable
       if(requestResponse.statusCode !== 200)
