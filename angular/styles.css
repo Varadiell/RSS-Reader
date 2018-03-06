@@ -51,3 +51,11 @@ mat-form-field {
 .padding-top-15 {
   padding-top: 15px !important;
 }
+
+.snackbar-error {
+  background-color: red !important;
+}
+
+.snackbar-success {
+  background-color: green !important;
+}

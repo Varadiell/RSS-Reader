@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
@@ -23,6 +24,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     MatListModule,
     MatMenuModule,
     MatProgressBarModule,
+    MatSnackBarModule,
     MatToolbarModule
   ],
   imports: [

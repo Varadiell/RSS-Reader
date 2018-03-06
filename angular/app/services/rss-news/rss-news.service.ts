@@ -24,7 +24,6 @@ export class RssNewsService {
   getListRssNews(id: number): Observable<RssNews[]> {
     return this.http.get<RssNews[]>(`api/rssFeed/${id}/news`)
     .pipe(
-      tap(() => this.logger.log('fetched listRssNews')),
       catchError(this.handleError('getListRssNews()', []))
     );
   }
@@ -32,15 +31,13 @@ export class RssNewsService {
   getRssNews(id: number): Observable<RssNews> {
     return this.http.get<RssNews>(`api/rssNews/${id}`)
     .pipe(
-      tap(() => this.logger.log(`fetched rssNews id: ${id}`)),
       catchError(this.handleError<RssNews>(`getRssNews(${id})`))
     );
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      this.logger.error(error);
-      this.logger.log(`${operation} failed: ${error.message}`);
+      this.logger.error(`Error : ${error.message}`);
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };

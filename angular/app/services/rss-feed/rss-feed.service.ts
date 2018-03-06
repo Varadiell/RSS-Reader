@@ -24,7 +24,9 @@ export class RssFeedService {
   addRssFeed(rssFeed: RssFeed): Observable<RssFeed> {
     return this.http.post<RssFeed>('api/rssFeed', rssFeed, httpOptions)
     .pipe(
-      tap((newRssFeed: RssFeed) => this.logger.log(`added rssFeed id=${newRssFeed.id}`)),
+      tap((newRssFeed: RssFeed) => {
+        this.logger.success(`Added "${newRssFeed.title}".`);
+      }),
       catchError(this.handleError<RssFeed>('addRssFeed(rssFeed)'))
     );
   }
@@ -32,7 +34,7 @@ export class RssFeedService {
   deleteRssFeed(id: number): Observable<RssFeed> {
     return this.http.delete<RssFeed>(`api/rssFeed/${id}`)
     .pipe(
-      tap(() => this.logger.log(`deleted rssFeed id: ${id}`)),
+      tap(() => this.logger.log(`Deleted.`)),
       catchError(this.handleError<RssFeed>(`deleteRssFeed(${id})`))
     );
   }
@@ -40,7 +42,6 @@ export class RssFeedService {
   getListRssFeeds(): Observable<RssFeed[]> {
     return this.http.get<RssFeed[]>('api/rssFeeds')
     .pipe(
-      tap(() => this.logger.log('fetched listRssFeeds')),
       catchError(this.handleError('getListRssFeeds()', []))
     );
   }
@@ -48,7 +49,6 @@ export class RssFeedService {
   getRssFeed(id: number): Observable<RssFeed> {
     return this.http.get<RssFeed>(`api/rssFeed/${id}`)
     .pipe(
-      tap(() => this.logger.log(`fetched rssFeed id: ${id}`)),
       catchError(this.handleError<RssFeed>(`getRssFeed(${id})`))
     );
   }
@@ -56,15 +56,14 @@ export class RssFeedService {
   updateRssFeed(rssFeed: RssFeed): Observable<any> {
     return this.http.put(`api/rssFeed/${rssFeed.id}`, rssFeed, httpOptions)
     .pipe(
-      tap(() => this.logger.log(`updated rssFeed id: ${rssFeed.id}`)),
+      tap(() => this.logger.success(`Saved.`)),
       catchError(this.handleError<any>('updateRssFeed(rssFeed)'))
     );
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      this.logger.error(error);
-      this.logger.log(`${operation} failed: ${error.message}`);
+      this.logger.error(`Error : ${error.message}`);
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };

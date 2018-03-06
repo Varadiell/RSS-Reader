@@ -1,15 +1,35 @@
+import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
+
+@Injectable()
 export class LoggerService {
 
+  constructor(
+    public snackBar: MatSnackBar
+  ) { }
+
   error(message: any) {
+    this.snackBar.open(message, null, {
+      duration: 3000,
+      horizontalPosition: 'right',
+      panelClass: 'snackbar-error'
+    });
     console.error(message);
   }
 
   log(message: any) {
-    console.log(message);
+    this.snackBar.open(message, null, {
+      duration: 3000,
+      horizontalPosition: 'right'
+    });
   }
 
-  warn(message: any) {
-    console.warn(message);
+  success(message: any) {
+    this.snackBar.open(message, null, {
+      duration: 3000,
+      horizontalPosition: 'right',
+      panelClass: 'snackbar-success'
+    });
   }
 
 }
