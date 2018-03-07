@@ -7,7 +7,7 @@ const knex = require('knex');
 module.exports = knex({
   'client' : 'sqlite3',
   'connection' : {
-    'filename' : 'data.sqlite'
+    'filename' : 'sqlite3/data.sqlite'
   },
   'useNullAsDefault' : true
 });
