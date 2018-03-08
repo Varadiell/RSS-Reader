@@ -33,6 +33,9 @@ function createWindow(){
       'icon' : path.join(__dirname, '../dist/favicon.ico')
     });
 
+    // Remove the menu
+    mainWindow.setMenu(null);
+
     // Load index from Express in the main window.
     mainWindow.loadURL('http://localhost:' + app.expressApp.get('port'));
 
