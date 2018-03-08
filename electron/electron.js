@@ -28,8 +28,8 @@ function createWindow(){
     mainWindow = new BrowserWindow({
       'width' : dimensions.width - 100,
       'height' : dimensions.height - 100,
-      'minWidth' : 768,
-      'minHeight' : 300,
+      'minWidth' : 600,
+      'minHeight' : 400,
       'icon' : path.join(__dirname, '../dist/favicon.ico')
     });
 

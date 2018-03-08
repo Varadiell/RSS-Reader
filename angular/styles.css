@@ -31,6 +31,10 @@ mat-form-field {
   flex: 1 1 auto !important;
 }
 
+.mat-card-header-text {
+  width: 100% !important;
+}
+
 .margin-right-10 {
   margin-right: 10px !important;
 }
@@ -58,4 +62,19 @@ mat-form-field {
 
 .snackbar-success {
   background-color: green !important;
+}
+
+.text-overflow-ellipsis {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+.webview {
+  bottom: 0;
+  left: 0;
+  margin: 7px 7px 7px 7px;
+  position: absolute;
+  right: 0;
+  top: 115px;
 }

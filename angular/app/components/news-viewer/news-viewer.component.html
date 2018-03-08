@@ -1,15 +1,9 @@
 <div *ngIf="rssNews">
+
   <mat-card>
     <mat-card-header>
-      <mat-card-title>RssNews : {{rssNews.title}}</mat-card-title>
-      <mat-card-subtitle>Link : {{rssNews.link}}</mat-card-subtitle>
+      <mat-card-title class="text-overflow-ellipsis bold">{{rssNews.title}}</mat-card-title>
     </mat-card-header>
-    <mat-divider></mat-divider>
-    <mat-card-content>
-      <p class="padding-top-15">
-        <span class="bold">{{rssNews.pubDate | date:'short'}}</span> : {{rssNews.description}}
-      </p>
-    </mat-card-content>
     <mat-divider></mat-divider>
     <mat-card-actions>
       <button mat-raised-button color="primary" (click)="goBack()">
@@ -17,4 +11,7 @@
       </button>
     </mat-card-actions>
   </mat-card>
+
+  <webview attr.src="{{rssNews.link}}" class="margin-top-10 webview"></webview>
+
 </div>

@@ -5,6 +5,9 @@ import { RssFeedEditorComponent } from '@components/rss-feed-editor/rss-feed-edi
 import { RssFeedsComponent } from '@components/rss-feeds/rss-feeds.component';
 import { RssNewsComponent } from '@components/rss-news/rss-news.component';
 
+// Directives
+import { WebviewDirective } from '@directives/webview/webview.directive';
+
 // Modules
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -28,7 +31,8 @@ import { RssNewsService } from '@services/rss-news/rss-news.service';
     RssFeedEditorComponent,
     RssFeedsComponent,
     RssNewsComponent,
-    NewsViewerComponent
+    NewsViewerComponent,
+    WebviewDirective
   ],
   imports: [
     AppRoutingModule,
