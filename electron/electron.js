@@ -13,32 +13,40 @@ let mainWindow = null;
 function createWindow(){
 
   // Launch the express server
-  app.expressApp = rootRequire('express/express.js');
+  rootRequire('express/express.js')(function(err, expressApp){
 
-  // Computer window dimensions.
-  const dimensions = electron.screen.getPrimaryDisplay().size;
+    // Handle error
+    if(err) process.exit(1);
 
-  // Browser window creation.
-  mainWindow = new BrowserWindow({
-    'width' : dimensions.width - 100,
-    'height' : dimensions.height - 100,
-    'minWidth' : 768,
-    'minHeight' : 300,
-    'icon' : path.join(__dirname, '../dist/favicon.ico')
-  });
+    // Express app
+    app.expressApp = expressApp;
 
-  // Load index from Express in the main window.
-  mainWindow.loadURL('http://localhost:' + app.expressApp.get('port'));
+    // Computer window dimensions.
+    const dimensions = electron.screen.getPrimaryDisplay().size;
 
-  // Focus on the main window.
-  mainWindow.focus();
+    // Browser window creation.
+    mainWindow = new BrowserWindow({
+      'width' : dimensions.width - 100,
+      'height' : dimensions.height - 100,
+      'minWidth' : 768,
+      'minHeight' : 300,
+      'icon' : path.join(__dirname, '../dist/favicon.ico')
+    });
 
-  // OpenDevTools if node_env is development.
-  if(app.expressApp.get('node_env') === 'development') mainWindow.webContents.openDevTools();
+    // Load index from Express in the main window.
+    mainWindow.loadURL('http://localhost:' + app.expressApp.get('port'));
 
-  // Dereference the window object when the window is closed.
-  mainWindow.on('closed', function(){
-    mainWindow = null;
+    // Focus on the main window.
+    mainWindow.focus();
+
+    // OpenDevTools if node_env is development.
+    if(app.expressApp.get('node_env') === 'development') mainWindow.webContents.openDevTools();
+
+    // Dereference the window object when the window is closed.
+    mainWindow.on('closed', function(){
+      mainWindow = null;
+    });
+
   });
 
 }
