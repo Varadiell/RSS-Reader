@@ -1,5 +1,5 @@
 // Error response
-module.exports = function(err, req, res){
+module.exports = function(err, req, res, next){
   // Error status (default 500)
   err.status = err.status || 500;
   // Status response
@@ -8,12 +8,10 @@ module.exports = function(err, req, res){
   if(req.app.node_env !== 'development' || err.status !== 500) err.stack = undefined;
   // Response object
   const response = {
-    'success' : false,
-    'error' : {
-      'status' : err.status,
-      'message' : err.message,
-      'stack' : err.stack
-    }
+    'status' : err.status,
+    'message' : err.message,
+    'stack' : err.stack
   };
   res.send(response);
+  next();
 };
