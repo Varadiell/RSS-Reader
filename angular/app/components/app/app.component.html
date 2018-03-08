@@ -1,9 +1,13 @@
-<mat-toolbar color="primary" class="margin-bottom-10">
-  <span>Rss-Reader</span>
-  <span class="fill-horizontal-space"></span>
-  <a routerLink="/rssFeeds" mat-raised-button color="primary">
-    <fa name="fas fa-home"></fa>
-  </a>
-</mat-toolbar>
+<div class="navbar-top">
+  <mat-toolbar color="primary">
+    <span>Rss-Reader</span>
+    <span class="fill-horizontal-space"></span>
+    <a routerLink="/rssFeeds" mat-raised-button color="primary">
+      <fa name="fas fa-home"></fa>
+    </a>
+  </mat-toolbar>
+</div>
 
-<router-outlet></router-outlet>
+<div class="margin-top-74">
+  <router-outlet></router-outlet>
+</div>

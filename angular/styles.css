@@ -31,10 +31,6 @@ mat-form-field {
   flex: 1 1 auto !important;
 }
 
-.margin-bottom-10 {
-  margin-bottom: 10px !important;
-}
-
 .margin-right-10 {
   margin-right: 10px !important;
 }
@@ -45,6 +41,10 @@ mat-form-field {
 
 .margin-top-20 {
   margin-top: 20px !important;
+}
+
+.margin-top-74 {
+  margin-top: 74px !important;
 }
 
 .margin-bottom-top-20 {
