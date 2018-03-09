@@ -6,6 +6,7 @@ import { RssNews } from '@models/rssNews';
 
 import { MaterialModule } from '@modules/material.module';
 
+import { DialogService } from '@services/dialog/dialog.service';
 import { RssFeedService } from '@services/rss-feed/rss-feed.service';
 import { RssNewsService } from '@services/rss-news/rss-news.service';
 
@@ -23,6 +24,7 @@ export class RssNewsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private dialogService: DialogService,
     private router: Router,
     private rssFeedService: RssFeedService,
     private rssNewsService: RssNewsService
@@ -34,8 +36,12 @@ export class RssNewsComponent implements OnInit {
   }
 
   deleteRssFeed(id: number): void {
-    this.rssFeedService.deleteRssFeed(id).subscribe(() => {
-      this.router.navigate(['/rssFeeds']);
+    this.dialogService.confirm('Delete RssFeed', 'The selected RssFeed will be deleted.').subscribe((res) => {
+      if ( res === true) {
+        this.rssFeedService.deleteRssFeed(id).subscribe(() => {
+          this.router.navigate(['/rssFeeds']);
+        });
+      }
     });
   }
 

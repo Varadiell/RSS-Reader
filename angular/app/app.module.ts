@@ -1,5 +1,6 @@
 // Components
 import { AppComponent } from '@components/app/app.component';
+import { ConfirmDialogComponent } from '@components/confirm-dialog/confirm-dialog.component';
 import { NewsViewerComponent } from '@components/news-viewer/news-viewer.component';
 import { RssFeedEditorComponent } from '@components/rss-feed-editor/rss-feed-editor.component';
 import { RssFeedsComponent } from '@components/rss-feeds/rss-feeds.component';
@@ -18,6 +19,7 @@ import { AppRoutingModule } from '@modules/app-routing.module';
 import { MaterialModule } from '@modules/material.module';
 
 // Services
+import { DialogService } from '@services/dialog/dialog.service';
 import { ErrorHandlerService } from '@services/error-handler/error-handler.service';
 import { LoggerService } from '@services/logger/logger.service';
 import { RssFeedService } from '@services/rss-feed/rss-feed.service';
@@ -29,11 +31,15 @@ import { RssNewsService } from '@services/rss-news/rss-news.service';
   ],
   declarations: [
     AppComponent,
+    ConfirmDialogComponent,
     RssFeedEditorComponent,
     RssFeedsComponent,
     RssNewsComponent,
     NewsViewerComponent,
     WebviewDirective
+  ],
+  entryComponents: [
+    ConfirmDialogComponent
   ],
   imports: [
     AppRoutingModule,
@@ -44,6 +50,7 @@ import { RssNewsService } from '@services/rss-news/rss-news.service';
     MaterialModule
   ],
   providers: [
+    DialogService,
     ErrorHandlerService,
     LoggerService,
     RssFeedService,

@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 import { RssFeed } from '@models/rssFeed';
 
-import { RssFeedService } from '@services/rss-feed/rss-feed.service';
-
 import { MaterialModule } from '@modules/material.module';
+
+import { DialogService } from '@services/dialog/dialog.service';
+import { RssFeedService } from '@services/rss-feed/rss-feed.service';
 
 @Component({
   selector: 'app-rss-feeds',
@@ -19,6 +20,7 @@ export class RssFeedsComponent implements OnInit {
   isLoadingAddRssFeed = false;
 
   constructor(
+    private dialogService: DialogService,
     private rssFeedService: RssFeedService
   ) { }
 
@@ -38,8 +40,12 @@ export class RssFeedsComponent implements OnInit {
   }
 
   deleteRssFeed(id: number): void {
-    this.listRssFeeds = this.listRssFeeds.filter((itemRssFeed) => itemRssFeed.id !== id);
-    this.rssFeedService.deleteRssFeed(id).subscribe();
+    this.dialogService.confirm('Delete RssFeed', 'The selected RssFeed will be deleted.').subscribe((res) => {
+      if ( res === true) {
+        this.listRssFeeds = this.listRssFeeds.filter((itemRssFeed) => itemRssFeed.id !== id);
+        this.rssFeedService.deleteRssFeed(id).subscribe();
+      }
+    });
   }
 
   getListRssFeeds(): void {
