@@ -1,5 +1,6 @@
 // Modules
 const _ = require('lodash');
+const entities = require('entities');
 const striptags = require('striptags');
 const xml2js = require('xml2js');
 // Functions
@@ -30,11 +31,13 @@ module.exports = function(){
       const listRssNews = [];
       _.forEach(_.get(channel, '[0].item'), function(e){
         if(listRssNews.length >= RSSNEWS_ADD_LIMIT) return;
+        // Handle pubDate
         let pubDate = Date.parse(_.get(e, 'pubDate[0]'));
         if(isNaN(pubDate)) pubDate = Date.now();
+        // Push into listRssNews
         listRssNews.push({
           'rssFeedId' : req.itemRssFeed.id,
-          'description' : striptags(_.get(e, 'description[0]')),
+          'description' : entities.decodeHTML(striptags(_.get(e, 'description[0]'))),
           'link' : _.get(e, 'link[0]'),
           'pubDate' : pubDate,
           'title' : _.get(e, 'title[0]')
