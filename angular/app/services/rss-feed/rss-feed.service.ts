@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 
 import { RssFeed } from '@models/rssFeed';
 
+import { ErrorHandlerService} from '@services/error-handler/error-handler.service';
 import { LoggerService } from '@services/logger/logger.service';
 
 import { Observable } from 'rxjs/Observable';
@@ -17,6 +18,7 @@ const httpOptions = {
 export class RssFeedService {
 
   constructor(
+    private errorHandler: ErrorHandlerService,
     private http: HttpClient,
     private logger: LoggerService
   ) { }
@@ -27,7 +29,7 @@ export class RssFeedService {
       tap((newRssFeed: RssFeed) => {
         this.logger.success(`Added "${newRssFeed.title}".`);
       }),
-      catchError(this.handleError<RssFeed>('addRssFeed(rssFeed)'))
+      catchError(this.errorHandler.handleError<RssFeed>('addRssFeed(rssFeed)'))
     );
   }
 
@@ -35,21 +37,21 @@ export class RssFeedService {
     return this.http.delete<RssFeed>(`api/rssFeed/${id}`)
     .pipe(
       tap(() => this.logger.log(`Deleted.`)),
-      catchError(this.handleError<RssFeed>(`deleteRssFeed(${id})`))
+      catchError(this.errorHandler.handleError<RssFeed>(`deleteRssFeed(${id})`))
     );
   }
 
   getListRssFeeds(): Observable<RssFeed[]> {
     return this.http.get<RssFeed[]>('api/rssFeeds')
     .pipe(
-      catchError(this.handleError('getListRssFeeds()', []))
+      catchError(this.errorHandler.handleError('getListRssFeeds()', []))
     );
   }
 
   getRssFeed(id: number): Observable<RssFeed> {
     return this.http.get<RssFeed>(`api/rssFeed/${id}`)
     .pipe(
-      catchError(this.handleError<RssFeed>(`getRssFeed(${id})`))
+      catchError(this.errorHandler.handleError<RssFeed>(`getRssFeed(${id})`))
     );
   }
 
@@ -57,16 +59,8 @@ export class RssFeedService {
     return this.http.put(`api/rssFeed/${rssFeed.id}`, rssFeed, httpOptions)
     .pipe(
       tap(() => this.logger.success(`Saved.`)),
-      catchError(this.handleError<any>('updateRssFeed(rssFeed)'))
+      catchError(this.errorHandler.handleError<any>('updateRssFeed(rssFeed)'))
     );
-  }
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      this.logger.error(`${error.error.message}`);
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
   }
 
 }

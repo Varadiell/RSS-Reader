@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 
 import { RssNews } from '@models/rssNews';
 
+import { ErrorHandlerService} from '@services/error-handler/error-handler.service';
 import { LoggerService } from '@services/logger/logger.service';
 
 import { Observable } from 'rxjs/Observable';
@@ -17,6 +18,7 @@ const httpOptions = {
 export class RssNewsService {
 
   constructor(
+    private errorHandler: ErrorHandlerService,
     private http: HttpClient,
     private logger: LoggerService
   ) { }
@@ -24,30 +26,22 @@ export class RssNewsService {
   getListRssNews(id: number): Observable<RssNews[]> {
     return this.http.get<RssNews[]>(`api/rssFeed/${id}/news`)
     .pipe(
-      catchError(this.handleError('getListRssNews()', []))
+      catchError(this.errorHandler.handleError('getListRssNews()', []))
     );
   }
 
   getRssNews(id: number): Observable<RssNews> {
     return this.http.get<RssNews>(`api/rssNews/${id}`)
     .pipe(
-      catchError(this.handleError<RssNews>(`getRssNews(${id})`))
+      catchError(this.errorHandler.handleError<RssNews>(`getRssNews(${id})`))
     );
   }
 
   refreshListRssNews(id: number): Observable<RssNews[]> {
     return this.http.get<RssNews[]>(`api/rssFeed/${id}/news/refresh`)
     .pipe(
-      catchError(this.handleError('refreshListRssNews()', []))
+      catchError(this.errorHandler.handleError('refreshListRssNews()', []))
     );
-  }
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      this.logger.error(`${error.error.message}`);
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
   }
 
 }

@@ -18,6 +18,7 @@ import { AppRoutingModule } from '@modules/app-routing.module';
 import { MaterialModule } from '@modules/material.module';
 
 // Services
+import { ErrorHandlerService } from '@services/error-handler/error-handler.service';
 import { LoggerService } from '@services/logger/logger.service';
 import { RssFeedService } from '@services/rss-feed/rss-feed.service';
 import { RssNewsService } from '@services/rss-news/rss-news.service';
@@ -43,6 +44,7 @@ import { RssNewsService } from '@services/rss-news/rss-news.service';
     MaterialModule
   ],
   providers: [
+    ErrorHandlerService,
     LoggerService,
     RssFeedService,
     RssNewsService
