@@ -28,7 +28,7 @@ knex.schema.hasTable('rssNews').then(function(exists){
     table.integer('rssFeedId');
     table.string('description', 1000);
     table.string('link', 250);
-    table.date('pubDate');
+    table.integer('pubDate');
     table.string('title', 150);
   }).then(function(){
     console.info('Table "rssNews" created.');

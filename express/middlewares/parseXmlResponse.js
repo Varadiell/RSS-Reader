@@ -30,11 +30,13 @@ module.exports = function(){
       const listRssNews = [];
       _.forEach(_.get(channel, '[0].item'), function(e){
         if(listRssNews.length >= RSSNEWS_ADD_LIMIT) return;
+        let pubDate = Date.parse(_.get(e, 'pubDate[0]'));
+        if(isNaN(pubDate)) pubDate = Date.now();
         listRssNews.push({
           'rssFeedId' : req.itemRssFeed.id,
           'description' : striptags(_.get(e, 'description[0]')),
           'link' : _.get(e, 'link[0]'),
-          'pubDate' : _.get(e, 'pubDate[0]'),
+          'pubDate' : pubDate,
           'title' : _.get(e, 'title[0]')
         });
       });
