@@ -4,7 +4,6 @@ import { Injectable } from '@angular/core';
 import { RssNews } from '@models/rssNews';
 
 import { ErrorHandlerService} from '@services/error-handler/error-handler.service';
-import { LoggerService } from '@services/logger/logger.service';
 
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
@@ -19,8 +18,7 @@ export class RssNewsService {
 
   constructor(
     private errorHandler: ErrorHandlerService,
-    private http: HttpClient,
-    private logger: LoggerService
+    private http: HttpClient
   ) { }
 
   getListRssNews(id: number): Observable<RssNews[]> {
