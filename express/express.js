@@ -29,8 +29,8 @@ module.exports = function(callback){
     'extended' : false // Security issues if "true"
   }));
 
-  // Serve angular "dist" folder
-  app.use(express.static(path.join(__dirname, '../dist')));
+  // Serve angular "distAngular" folder
+  app.use(express.static(path.join(__dirname, '../distAngular')));
 
   // Serve express "public" folder
   app.use('/public', express.static(path.join(__dirname, 'public')));

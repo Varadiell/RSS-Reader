@@ -30,7 +30,7 @@ function createWindow(){
       'height' : dimensions.height - 100,
       'minWidth' : 600,
       'minHeight' : 400,
-      'icon' : path.join(__dirname, '../dist/favicon.ico')
+      'icon' : path.join(__dirname, '../distAngular/favicon.ico')
     });
 
     // Remove the menu

@@ -11,7 +11,7 @@
       "@modules/*" : ["app/modules/*"],
       "@services/*" : ["app/services/*"]
     },
-    "outDir": "./dist/out-tsc",
+    "outDir": "./distAngular/out-tsc",
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",

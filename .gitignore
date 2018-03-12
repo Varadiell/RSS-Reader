@@ -4,6 +4,7 @@
 
 # Compiled output
 /dist
+/distAngular
 /dist-server
 /tmp
 /out-tsc

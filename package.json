@@ -16,12 +16,20 @@
   "scripts": {
     "ng": "ng",
     "start": "ng build && electron .",
+    "start_prod": "ng build --prod && electron .",
+    "electron_builder": "build",
     "build": "ng build",
     "build:sqlite3": "./node_modules/.bin/electron-rebuild -w sqlite3 -p",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "test_eslint": "./node_modules/.bin/eslint ./"
+  },
+  "build": {
+    "appId": "com.rss-reader",
+    "win": {
+      "target": "nsis"
+    }
   },
   "dependencies": {
     "@angular/animations": "^5.2.8",
@@ -40,6 +48,7 @@
     "bookshelf": "~0.12.1",
     "core-js": "^2.4.1",
     "entities": "^1.1.1",
+    "express": "~4.16.2",
     "font-awesome": "^4.7.0",
     "get-port": "^3.2.0",
     "hammerjs": "^2.0.8",
@@ -61,10 +70,10 @@
     "@types/node": "^6.0.102",
     "ajv": "^6.2.1",
     "codelyzer": "^4.2.1",
-    "electron": "^1.8.3",
+    "electron": "1.8.3",
+    "electron-builder": "~20.4.1",
     "electron-rebuild": "^1.7.3",
     "eslint": "^4.18.2",
-    "express": "~4.16.2",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~2.0.0",

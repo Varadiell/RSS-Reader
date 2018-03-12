@@ -8,7 +8,7 @@ module.exports = function(router){
 
   // Redirection to angular index.html for GET requests
   router.get('*', function(req, res){
-    res.sendFile(path.join(__dirname, '../../dist/index.html'));
+    res.sendFile(path.join(__dirname, '../../distAngular/index.html'));
   });
 
 };
