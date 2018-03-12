@@ -69,12 +69,12 @@ export class RssNewsComponent implements OnInit {
     const pageSize = this.paginator ? this.paginator.pageSize : this.previousPageSize;
     this.rssNewsService.getListRssNews(id, page, pageSize).subscribe((data) => {
       this.isLoadingRssNews = false;
+      this.listRssNews = data.listRssNews;
       if (this.paginator) {
         this.paginator.length = data.count;
       } else {
         this.length = data.count;
       }
-      this.listRssNews = data.listRssNews;
     });
   }
 
@@ -97,9 +97,10 @@ export class RssNewsComponent implements OnInit {
     const page = this.paginator.pageIndex + 1;
     const pageSize = this.paginator.pageSize;
     this.rssNewsService.refreshListRssNews(id).subscribe(() => {
-      this.rssNewsService.getListRssNews(id, page, pageSize).subscribe((listRssNews) => {
+      this.rssNewsService.getListRssNews(id, page, pageSize).subscribe((data) => {
         this.isLoadingRssNews = false;
-        this.listRssNews = listRssNews;
+        this.listRssNews = data.listRssNews;
+        this.paginator.length = data.count;
       });
     });
   }
