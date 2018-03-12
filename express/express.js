@@ -5,6 +5,7 @@ const errorHandler = rootRequire('express/functions/errorHandler');
 // Modules
 const async = require('async');
 const express = require('express');
+const fs = require('fs');
 const path = require('path');
 
 
@@ -15,12 +16,6 @@ module.exports = function(callback){
   const app = express();
 
   // =================================================================
-
-  // Environment (node_env)
-  app.set('node_env', (process.env.NODE_ENV || 'development').trim());
-
-  // SQLite3 initialization
-  rootRequire('express/functions/sqliteInit');
 
   // Body parser
   const bodyParser = require('body-parser');
@@ -51,6 +46,26 @@ module.exports = function(callback){
   // =================================================================
 
   async.series({
+    // Environment (node_env)
+    environment(callback){
+      app.set('node_env', (process.env.NODE_ENV || 'development').trim());
+      callback();
+    },
+    // Create sqlite3 folder
+    sqlite3_folder(callback){
+      const dir = '../sqlite3';
+      // eslint-disable-next-line
+      if(!fs.existsSync(dir)){
+        // eslint-disable-next-line
+        fs.mkdirSync(dir);
+      }
+      callback();
+    },
+    // SQLite3 initialization
+    sqlite3_init(callback){
+      rootRequire('express/functions/sqliteInit');
+      callback();
+    },
     // Port
     port(callback){
       const getPort = require('get-port');
