@@ -53,7 +53,7 @@ module.exports = function(callback){
     },
     // Create sqlite3 folder
     sqlite3_folder(callback){
-      const dir = '../sqlite3';
+      const dir = './sqlite3';
       // eslint-disable-next-line
       if(!fs.existsSync(dir)){
         // eslint-disable-next-line
