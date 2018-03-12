@@ -1,6 +1,8 @@
 // RssNews controller
 const rssNewsController = rootRequire('express/controllers/items/rssNews');
 // Middlewares
+const countRssNews = rootRequire('express/middlewares/countRssNews');
+const paginateRssNews = rootRequire('express/middlewares/paginateRssNews');
 const parseXmlResponse = rootRequire('express/middlewares/parseXmlResponse');
 const requestForRssNews = rootRequire('express/middlewares/requestForRssNews');
 const saveRssNews = rootRequire('express/middlewares/saveRssNews');
@@ -17,10 +19,12 @@ module.exports = function(router){
     rssNewsController.get
   );
 
-  // GetAll
+  // Paginate
   router.get(
     '/api/rssFeed/:rssFeedId/news',
-    rssNewsController.getAll
+    countRssNews(),
+    paginateRssNews(),
+    rssNewsController.paginate
   );
 
   // Refresh

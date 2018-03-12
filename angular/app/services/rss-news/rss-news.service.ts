@@ -21,10 +21,10 @@ export class RssNewsService {
     private http: HttpClient
   ) { }
 
-  getListRssNews(id: number, page: number, pageSize: number): Observable<RssNews[]> {
-    return this.http.get<RssNews[]>(`api/rssFeed/${id}/news?page=${page}&pageSize=${pageSize}`)
+  getListRssNews(id: number, page: number, pageSize: number): Observable<any> {
+    return this.http.get<any>(`api/rssFeed/${id}/news?page=${page}&pageSize=${pageSize}`)
     .pipe(
-      catchError(this.errorHandler.handleError(`getListRssNews(${id}, ${page}, ${pageSize})`, []))
+      catchError(this.errorHandler.handleError(`getListRssNews(${id}, ${page}, ${pageSize})`, {count : 0, listRssNews : []}))
     );
   }
 
@@ -35,10 +35,10 @@ export class RssNewsService {
     );
   }
 
-  refreshListRssNews(id: number): Observable<RssNews[]> {
-    return this.http.get<RssNews[]>(`api/rssFeed/${id}/news/refresh`)
+  refreshListRssNews(id: number): Observable<any> {
+    return this.http.get<any>(`api/rssFeed/${id}/news/refresh`)
     .pipe(
-      catchError(this.errorHandler.handleError('refreshListRssNews()', []))
+      catchError(this.errorHandler.handleError('refreshListRssNews()'))
     );
   }
 

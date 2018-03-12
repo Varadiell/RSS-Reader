@@ -25,6 +25,7 @@ export class RssNewsComponent implements OnInit {
   isLoadingRssNews = false;
 
   // Paginator
+  length: number;
   page: number;
   previousPageSize: number;
 
@@ -66,9 +67,14 @@ export class RssNewsComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     const page = this.paginator ? this.paginator.pageIndex + 1 : this.page;
     const pageSize = this.paginator ? this.paginator.pageSize : this.previousPageSize;
-    this.rssNewsService.getListRssNews(id, page, pageSize).subscribe((listRssNews) => {
+    this.rssNewsService.getListRssNews(id, page, pageSize).subscribe((data) => {
       this.isLoadingRssNews = false;
-      this.listRssNews = listRssNews;
+      if (this.paginator) {
+        this.paginator.length = data.count;
+      } else {
+        this.length = data.count;
+      }
+      this.listRssNews = data.listRssNews;
     });
   }
 
