@@ -1,4 +1,4 @@
-<div *ngIf="rssFeed">
+<form *ngIf="rssFeed" (ngSubmit)="save()">
   <mat-card>
     <mat-card-header>
       <mat-card-title>RssFeed : {{rssFeed.title}}</mat-card-title>
@@ -19,17 +19,17 @@
       </p>
       <mat-divider></mat-divider>
       <mat-form-field>
-        <input matInput [(ngModel)]="rssFeed.url" placeholder="URL"/>
+        <input matInput [(ngModel)]="rssFeed.url" [ngModelOptions]="{standalone:true}" placeholder="URL"/>
       </mat-form-field>
     </mat-card-content>
     <mat-divider></mat-divider>
     <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="goBack()">
+      <button mat-raised-button color="primary" type="button" (click)="goBack()">
         <fa name="fas fa-arrow-left"></fa>
       </button>
-      <button mat-raised-button color="primary" class="float-right" (click)="save()">
+      <button mat-raised-button color="primary" class="float-right" type="submit">
         <fa name="fas fa-check"></fa> Save
       </button>
     </mat-card-actions>
   </mat-card>
-</div>
+</form>
