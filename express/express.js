@@ -48,7 +48,7 @@ module.exports = function(callback){
   async.series({
     // Environment (node_env)
     environment(callback){
-      app.set('node_env', (process.env.NODE_ENV || 'development').trim());
+      app.set('node_env', (process.env.NODE_ENV || 'production').trim());
       callback();
     },
     // Create sqlite3 folder
