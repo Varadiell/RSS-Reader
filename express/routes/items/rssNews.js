@@ -30,7 +30,7 @@ module.exports = function(router){
     parseXmlResponse(),
     updateRssFeed(),
     saveRssNews(),
-    rssNewsController.getAll
+    rssNewsController.refresh
   );
 
 };

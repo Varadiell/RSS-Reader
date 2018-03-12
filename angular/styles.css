@@ -69,6 +69,15 @@ mat-form-field {
   width: 60px !important;
 }
 
+.mat-paginator-page-size-label {
+  width: 100px !important;
+}
+
+.mat-paginator-page-size-select {
+  margin: 6px 4px 0 4px !important;
+  width: 60px !important;
+}
+
 .padding-top-15 {
   padding-top: 15px !important;
 }

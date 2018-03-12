@@ -14,3 +14,8 @@ exports.getAll = function(req, res){
     res.json(listRssNews);
   });
 };
+
+// Refresh
+exports.refresh = function(req, res){
+  res.json({'success' : true});
+};

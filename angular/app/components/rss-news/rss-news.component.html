@@ -27,6 +27,15 @@
         <p mat-line><span class="bold">{{itemRssNews.pubDate | date:'HH:mm - dd/MM/yyyy'}}</span> : {{itemRssNews.description}}</p>
       </mat-list-item>
     </mat-list>
+    <mat-divider></mat-divider>
+    <mat-paginator
+      [length]="100"
+      [pageIndex]="page - 1"
+      [pageSize]="previousPageSize"
+      [pageSizeOptions]="[10,20,40]"
+      [showFirstLastButtons]="true"
+      (page)="pageChange($event)">
+    </mat-paginator>
   </mat-card-content>
   <mat-divider></mat-divider>
   <mat-card-actions>

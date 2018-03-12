@@ -21,10 +21,10 @@ export class RssNewsService {
     private http: HttpClient
   ) { }
 
-  getListRssNews(id: number): Observable<RssNews[]> {
-    return this.http.get<RssNews[]>(`api/rssFeed/${id}/news`)
+  getListRssNews(id: number, page: number, pageSize: number): Observable<RssNews[]> {
+    return this.http.get<RssNews[]>(`api/rssFeed/${id}/news?page=${page}&pageSize=${pageSize}`)
     .pipe(
-      catchError(this.errorHandler.handleError('getListRssNews()', []))
+      catchError(this.errorHandler.handleError(`getListRssNews(${id}, ${page}, ${pageSize})`, []))
     );
   }
 

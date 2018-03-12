@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { RssFeed } from '@models/rssFeed';
@@ -22,15 +24,24 @@ export class RssNewsComponent implements OnInit {
 
   isLoadingRssNews = false;
 
+  // Paginator
+  page: number;
+  previousPageSize: number;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
   constructor(
     private route: ActivatedRoute,
     private dialogService: DialogService,
+    private location: Location,
     private router: Router,
     private rssFeedService: RssFeedService,
     private rssNewsService: RssNewsService
   ) { }
 
   ngOnInit() {
+    this.page = +this.route.snapshot.queryParamMap.get('page') || 1;
+    this.previousPageSize = +this.route.snapshot.queryParamMap.get('pageSize') || 10;
     this.getRssFeed();
     this.getListRssNews();
   }
@@ -53,18 +64,37 @@ export class RssNewsComponent implements OnInit {
   getListRssNews(): void {
     this.isLoadingRssNews = true;
     const id = +this.route.snapshot.paramMap.get('id');
-    this.rssNewsService.getListRssNews(id).subscribe((listRssNews) => {
+    const page = this.paginator ? this.paginator.pageIndex + 1 : this.page;
+    const pageSize = this.paginator ? this.paginator.pageSize : this.previousPageSize;
+    this.rssNewsService.getListRssNews(id, page, pageSize).subscribe((listRssNews) => {
       this.isLoadingRssNews = false;
       this.listRssNews = listRssNews;
     });
   }
 
+  pageChange(event) {
+    if (event.pageSize !== this.previousPageSize) {
+      this.paginator.pageIndex = 0;
+      this.previousPageSize = event.pageSize;
+    }
+    const id = +this.route.snapshot.paramMap.get('id');
+    const page = this.paginator.pageIndex + 1;
+    const pageSize = this.paginator.pageSize;
+    this.location.replaceState(`/rssFeed/${id}/news`, `page=${page}&pageSize=${pageSize}`);
+    this.getListRssNews();
+  }
+
   refreshRssNews(): void {
     this.isLoadingRssNews = true;
+    this.paginator.pageIndex = 0;
     const id = +this.route.snapshot.paramMap.get('id');
-    this.rssNewsService.refreshListRssNews(id).subscribe((listRssNews) => {
-      this.isLoadingRssNews = false;
-      this.listRssNews = listRssNews;
+    const page = this.paginator.pageIndex + 1;
+    const pageSize = this.paginator.pageSize;
+    this.rssNewsService.refreshListRssNews(id).subscribe(() => {
+      this.rssNewsService.getListRssNews(id, page, pageSize).subscribe((listRssNews) => {
+        this.isLoadingRssNews = false;
+        this.listRssNews = listRssNews;
+      });
     });
   }
 
