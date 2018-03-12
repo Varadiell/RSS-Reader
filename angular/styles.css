@@ -4,6 +4,16 @@
   display: none !important;
 }
 
+a {
+  color: #3F51B5 !important;
+  text-decoration: none !important;
+  transition: color 0.3s ease-out !important;
+}
+
+a:hover {
+  color: red !important;
+}
+
 body {
   background-color: #DDDDDD !important;
   font-family: Roboto, Arial, sans-serif !important;
@@ -61,12 +71,25 @@ mat-form-field {
   max-height: 40px !important;
 }
 
+.mat-line {
+  max-height: 138px !important;
+  overflow : visible !important;
+  text-align: justify !important;
+  text-overflow: unset !important;
+  white-space : normal !important;
+}
+
 .mat-list-icon {
   height: 40px !important;
   font-size: 30px !important;
   padding: 0 0 0 0 !important;
   text-align: center !important;
   width: 60px !important;
+}
+
+.mat-list-item {
+  height: auto !important;
+  margin: 35px 0 35px 0 !important;
 }
 
 .mat-paginator-page-size-label {

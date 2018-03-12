@@ -35,9 +35,9 @@
           <fa name="fas fa-ellipsis-v"></fa>
         </button>
         <mat-menu #menu="matMenu">
-          <a mat-menu-item routerLink="/rssFeed/{{itemRssFeed.id}}">
+          <button mat-menu-item routerLink="/rssFeed/{{itemRssFeed.id}}">
             <fa name="fas fa-edit"></fa> Edit
-          </a>
+          </button>
           <button mat-menu-item (click)="deleteRssFeed(itemRssFeed.id)">
             <fa name="fas fa-trash"></fa> Delete
           </button>
