@@ -30,6 +30,12 @@ const RssNews = bookshelf.Model.extend({
   },
   'findOne' : function(query){
     return this.where(query).fetch();
+  },
+  'paginate' : function(query, page, pageSize){
+    return this.where(query).orderBy('-pubDate').fetchPage({
+      'page' : page,
+      'pageSize' : pageSize
+    });
   }
 });
 

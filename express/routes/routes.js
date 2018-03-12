@@ -6,6 +6,8 @@ const router = new express.Router();
 
 // === PARAMS
 rootRequire('express/routes/params')(router);
+// === QUERIES
+rootRequire('express/routes/queries')(router);
 
 // === ITEMS
 // RssFeed

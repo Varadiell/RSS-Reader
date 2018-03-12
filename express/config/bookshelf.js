@@ -6,4 +6,12 @@ const knexConfig = rootRequire('express/config/knex');
 
 
 // Bookshelf configuration
-module.exports = bookshelf(knexConfig);
+const bookshelfConfig = bookshelf(knexConfig);
+
+// Plugins
+bookshelfConfig.plugin('pagination');
+
+
+
+// Exports
+module.exports = bookshelfConfig;

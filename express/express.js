@@ -19,6 +19,9 @@ module.exports = function(callback){
   // Environment (node_env)
   app.set('node_env', (process.env.NODE_ENV || 'development').trim());
 
+  // SQLite3 initialization
+  rootRequire('express/functions/sqliteInit');
+
   // Body parser
   const bodyParser = require('body-parser');
   app.use(bodyParser.json());
@@ -32,9 +35,6 @@ module.exports = function(callback){
   // Serve express "public" folder
   app.use('/public', express.static(path.join(__dirname, 'public')));
 
-  // SQLite3 initialization
-  rootRequire('express/functions/sqliteInit');
-
   // =================================================================
 
   // Routes
@@ -47,6 +47,8 @@ module.exports = function(callback){
 
   // Error response
   app.use(rootRequire('express/middlewares/errorResponse'));
+
+  // =================================================================
 
   async.series({
     // Port

@@ -10,7 +10,7 @@ exports.get = function(req, res){
 
 // GetAll
 exports.getAll = function(req, res){
-  RssNews.findAll({'rssFeedId' : req.itemRssFeed.id}).then(function(listRssNews){
+  RssNews.paginate({'rssFeedId' : req.itemRssFeed.id}, req.pageQuery, req.pageSizeQuery).then(function(listRssNews){
     res.json(listRssNews);
   });
 };
