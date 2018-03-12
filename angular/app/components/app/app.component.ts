@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.setTitle('Rss-Reader');
+    this.setTitle('RSS-Reader');
   }
 
 }
