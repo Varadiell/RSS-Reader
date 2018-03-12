@@ -1,11 +1,11 @@
-// Modules
-const async = require('async');
-const express = require('express');
-const path = require('path');
 // Config
 const expressConfig = rootRequire('express/config/express');
 // Functions
 const errorHandler = rootRequire('express/functions/errorHandler');
+// Modules
+const async = require('async');
+const express = require('express');
+const path = require('path');
 
 
 

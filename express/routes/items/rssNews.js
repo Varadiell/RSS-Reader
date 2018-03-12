@@ -1,4 +1,4 @@
-// RssNews controller
+// Controller
 const rssNewsController = rootRequire('express/controllers/items/rssNews');
 // Middlewares
 const countRssNews = rootRequire('express/middlewares/countRssNews');

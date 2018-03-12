@@ -1,8 +1,3 @@
-// RssFeed
-const RssFeed = rootRequire('express/models/rssFeed');
-
-
-
 // Create
 exports.create = function(req, res){
   res.json(req.itemRssFeed);
@@ -15,18 +10,12 @@ exports.get = function(req, res){
 
 // GetAll
 exports.getAll = function(req, res){
-  RssFeed.findAll({}).then(function(listRssFeeds){
-    res.json(listRssFeeds);
-  });
+  res.json(req.listRssFeeds);
 };
 
 // Update
 exports.update = function(req, res){
-  RssFeed.update(req.itemRssFeed.id, {
-    'url' : req.body.url
-  }).then(function(rssFeed){
-    res.json(rssFeed);
-  });
+  res.json(req.itemRssFeed);
 };
 
 // Delete

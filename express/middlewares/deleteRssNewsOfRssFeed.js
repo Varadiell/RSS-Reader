@@ -1,7 +1,7 @@
-// Models
-const RssNews = rootRequire('express/models/rssNews');
 // Functions
 const errorHandler = rootRequire('express/functions/errorHandler');
+// Models
+const RssNews = rootRequire('express/models/rssNews');
 
 
 

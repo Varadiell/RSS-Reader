@@ -1,9 +1,9 @@
+// Functions
+const errorHandler = rootRequire('express/functions/errorHandler');
 // Modules
 const _ = require('lodash');
 const http = require('http');
 const https = require('https');
-// Functions
-const errorHandler = rootRequire('express/functions/errorHandler');
 
 
 

@@ -1,10 +1,10 @@
+// Functions
+const errorHandler = rootRequire('express/functions/errorHandler');
 // Modules
 const _ = require('lodash');
 const entities = require('entities');
 const striptags = require('striptags');
 const xml2js = require('xml2js');
-// Functions
-const errorHandler = rootRequire('express/functions/errorHandler');
 // Variables
 const RSSNEWS_ADD_LIMIT = 20;
 

@@ -1,9 +1,9 @@
-// RssNews
+// Functions
+const errorHandler = rootRequire('express/functions/errorHandler');
+// Models
 const RssNews = rootRequire('express/models/rssNews');
 // Modules
 const async = require('async');
-// Functions
-const errorHandler = rootRequire('express/functions/errorHandler');
 
 
 

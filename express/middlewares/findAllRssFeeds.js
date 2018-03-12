@@ -5,11 +5,12 @@ const RssFeed = rootRequire('express/models/rssFeed');
 
 
 
-// DeleteRssFeed
+// FindAllRssFeeds
 module.exports = function(){
   return function(req, res, next){
-    RssFeed.destroyById(req.itemRssFeed.id)
-      .then(() => {
+    RssFeed.findAll({})
+      .then(function(listRssFeeds){
+        req.listRssFeeds = listRssFeeds;
         next();
       }).catch((err) => {
         next(errorHandler.newError(500, err));
