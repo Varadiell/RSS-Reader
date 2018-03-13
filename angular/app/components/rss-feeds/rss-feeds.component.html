@@ -12,7 +12,7 @@
       </mat-form-field>
       <mat-action-row [hidden]="isLoadingAddRssFeed">
         <button mat-raised-button color="primary" type="submit">
-          <fa name="fas fa-plus"></fa> Add
+          <mat-icon fontSet="fa" fontIcon="fa-plus"></mat-icon> Add
         </button>
       </mat-action-row>
     </mat-expansion-panel>
@@ -33,14 +33,14 @@
         <h4 mat-line><a routerLink="/rssFeed/{{itemRssFeed.id}}/news">{{itemRssFeed.title}}</a></h4>
         <p mat-line>{{itemRssFeed.url}}</p>
         <button mat-raised-button [matMenuTriggerFor]="menu" class="btn-sm">
-          <fa name="fas fa-ellipsis-v"></fa>
+          <mat-icon fontSet="fa" fontIcon="fa-ellipsis-v"></mat-icon>
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item routerLink="/rssFeed/{{itemRssFeed.id}}">
-            <fa name="fas fa-edit"></fa> Edit
+            <mat-icon fontSet="fa" fontIcon="fa-edit"></mat-icon> Edit
           </button>
           <button mat-menu-item (click)="deleteRssFeed(itemRssFeed.id)">
-            <fa name="fas fa-trash"></fa> Delete
+            <mat-icon fontSet="fa" fontIcon="fa-trash"></mat-icon> Delete
           </button>
         </mat-menu>
       </mat-list-item>
