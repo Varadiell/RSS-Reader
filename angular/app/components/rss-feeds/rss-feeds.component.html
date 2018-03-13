@@ -9,10 +9,11 @@
           Add a new RSS feed to watch.
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <mat-form-field>
+      <mat-progress-bar [hidden]="!isLoadingAddRssFeed" mode="query" class="margin-top-20"></mat-progress-bar>
+      <mat-form-field [hidden]="isLoadingAddRssFeed">
         <input matInput #rssFeedUrl placeholder="URL"/>
       </mat-form-field>
-      <mat-action-row>
+      <mat-action-row [hidden]="isLoadingAddRssFeed">
         <button mat-raised-button color="primary" type="submit">
           <fa name="fas fa-plus"></fa> Add
         </button>
