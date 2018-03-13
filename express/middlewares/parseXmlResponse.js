@@ -38,6 +38,7 @@ module.exports = function(){
         listRssNews.push({
           'rssFeedId' : req.itemRssFeed.id,
           'description' : entities.decodeHTML(striptags(_.get(e, 'description[0]'))),
+          'isFavorite' : false,
           'link' : _.get(e, 'link[0]'),
           'pubDate' : pubDate,
           'title' : _.get(e, 'title[0]')

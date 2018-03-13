@@ -6,7 +6,10 @@ const paginateRssNews = rootRequire('express/middlewares/paginateRssNews');
 const parseXmlResponse = rootRequire('express/middlewares/parseXmlResponse');
 const requestForRssNews = rootRequire('express/middlewares/requestForRssNews');
 const saveRssNews = rootRequire('express/middlewares/saveRssNews');
+const setFavoriteRssNews = rootRequire('express/middlewares/setFavoriteRssNews');
 const updateRssFeed = rootRequire('express/middlewares/updateRssFeed');
+const updateRssNews = rootRequire('express/middlewares/updateRssNews');
+const unsetFavoriteRssNews = rootRequire('express/middlewares/unsetFavoriteRssNews');
 
 
 
@@ -35,6 +38,22 @@ module.exports = function(router){
     updateRssFeed(),
     saveRssNews(),
     rssNewsController.refresh
+  );
+
+  // SetFavorite
+  router.put(
+    '/api/rssNews/:rssNewsId/favorite',
+    setFavoriteRssNews(),
+    updateRssNews(),
+    rssNewsController.setFavorite
+  );
+
+  // UnsetFavorite
+  router.delete(
+    '/api/rssNews/:rssNewsId/favorite',
+    unsetFavoriteRssNews(),
+    updateRssNews(),
+    rssNewsController.unsetFavorite
   );
 
 };

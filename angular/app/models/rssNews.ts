@@ -4,6 +4,7 @@ export class RssNews {
   rssFeedId: number;
 
   description: string;
+  isFavorite: boolean;
   link: string;
   pubDate: string;
   title: string;

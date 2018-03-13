@@ -48,10 +48,12 @@ export class RssNewsComponent implements OnInit {
   }
 
   deleteRssFeed(id: number): void {
-    this.dialogService.confirm('Delete RssFeed', 'The selected RssFeed will be deleted.').subscribe((res) => {
-      if ( res === true) {
-        this.rssFeedService.deleteRssFeed(id).subscribe(() => {
-          this.router.navigate(['/rssFeeds']);
+    this.dialogService.confirm('Delete RssFeed', 'The selected RssFeed will be deleted.').subscribe((resConfirm) => {
+      if (resConfirm === true) {
+        this.rssFeedService.deleteRssFeed(id).subscribe((resDelete) => {
+          if (resDelete === true) {
+            this.router.navigate(['/rssFeeds']);
+          }
         });
       }
     });
@@ -96,12 +98,38 @@ export class RssNewsComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     const page = this.paginator.pageIndex + 1;
     const pageSize = this.paginator.pageSize;
-    this.rssNewsService.refreshListRssNews(id).subscribe(() => {
-      this.rssNewsService.getListRssNews(id, page, pageSize).subscribe((data) => {
-        this.isLoadingRssNews = false;
-        this.listRssNews = data.listRssNews;
-        this.paginator.length = data.count;
-      });
+    this.rssNewsService.refreshListRssNews(id).subscribe((res) => {
+      if (res === true) {
+        this.rssNewsService.getListRssNews(id, page, pageSize).subscribe((data) => {
+          this.isLoadingRssNews = false;
+          this.listRssNews = data.listRssNews;
+          this.paginator.length = data.count;
+        });
+      }
+    });
+  }
+
+  setFavorite(id: number): void {
+    this.rssNewsService.setFavorite(id).subscribe((res) => {
+      if (res === true) {
+        this.listRssNews.map((itemRssNews) => {
+          if (itemRssNews.id === id) {
+            itemRssNews.isFavorite = true;
+          }
+        });
+      }
+    });
+  }
+
+  unsetFavorite(id: number): void {
+    this.rssNewsService.unsetFavorite(id).subscribe((res) => {
+      if (res === true) {
+        this.listRssNews.map((itemRssNews) => {
+          if (itemRssNews.id === id) {
+            itemRssNews.isFavorite = false;
+          }
+        });
+      }
     });
   }
 

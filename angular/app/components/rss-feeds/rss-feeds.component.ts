@@ -40,10 +40,13 @@ export class RssFeedsComponent implements OnInit {
   }
 
   deleteRssFeed(id: number): void {
-    this.dialogService.confirm('Delete RssFeed', 'The selected RssFeed will be deleted.').subscribe((res) => {
-      if ( res === true) {
-        this.listRssFeeds = this.listRssFeeds.filter((itemRssFeed) => itemRssFeed.id !== id);
-        this.rssFeedService.deleteRssFeed(id).subscribe();
+    this.dialogService.confirm('Delete RssFeed', 'The selected RssFeed will be deleted.').subscribe((resConfirm) => {
+      if (resConfirm === true) {
+        this.rssFeedService.deleteRssFeed(id).subscribe((resDelete) => {
+          if (resDelete === true) {
+            this.listRssFeeds = this.listRssFeeds.filter((itemRssFeed) => itemRssFeed.id !== id);
+          }
+        });
       }
     });
   }

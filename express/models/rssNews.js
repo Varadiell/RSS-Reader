@@ -36,6 +36,12 @@ const RssNews = bookshelf.Model.extend({
       'page' : page,
       'pageSize' : pageSize
     });
+  },
+  'update' : function(id, data){
+    const options = {'patch' : true, 'require' : true};
+    return this.findById(id).then(function(rssNews){
+      return rssNews ? rssNews.save(data, options) : undefined;
+    });
   }
 });
 

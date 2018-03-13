@@ -13,5 +13,15 @@ exports.paginate = function(req, res){
 
 // Refresh
 exports.refresh = function(req, res){
-  res.json();
+  res.json(true);
+};
+
+// SetFavorite
+exports.setFavorite = function(req, res){
+  res.json(true);
+};
+
+// UnsetFavorite
+exports.unsetFavorite = function(req, res){
+  res.json(true);
 };

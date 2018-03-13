@@ -38,7 +38,21 @@ export class RssNewsService {
   refreshListRssNews(id: number): Observable<any> {
     return this.http.get<any>(`api/rssFeed/${id}/news/refresh`)
     .pipe(
-      catchError(this.errorHandler.handleError('refreshListRssNews()'))
+      catchError(this.errorHandler.handleError(`refreshListRssNews(${id})`))
+    );
+  }
+
+  setFavorite(id: number): Observable<any> {
+    return this.http.put<any>(`api/rssNews/${id}/favorite`, null)
+    .pipe(
+      catchError(this.errorHandler.handleError(`setFavorite(${id})`))
+    );
+  }
+
+  unsetFavorite(id: number): Observable<any> {
+    return this.http.delete<any>(`api/rssNews/${id}/favorite`)
+    .pipe(
+      catchError(this.errorHandler.handleError(`unsetFavorite(${id})`))
     );
   }
 

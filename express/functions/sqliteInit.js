@@ -7,7 +7,9 @@ const knex = rootRequire('express/config/knex');
 knex.schema.hasTable('rssFeeds').then(function(exists){
   if(exists) return;
   return knex.schema.createTable('rssFeeds', function(table){
+    // Primary
     table.increments('id').primary();
+    // Fields
     table.string('description', 1000);
     table.string('image', 250);
     table.string('link', 250);
@@ -25,9 +27,13 @@ knex.schema.hasTable('rssFeeds').then(function(exists){
 knex.schema.hasTable('rssNews').then(function(exists){
   if(exists) return;
   return knex.schema.createTable('rssNews', function(table){
+    // Primary
     table.increments('id').primary();
+    // Secondary
     table.integer('rssFeedId');
+    // Fields
     table.string('description', 1000);
+    table.boolean('isFavorite');
     table.string('link', 250);
     table.integer('pubDate');
     table.string('title', 150);

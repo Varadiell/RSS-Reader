@@ -33,11 +33,11 @@ export class RssFeedService {
     );
   }
 
-  deleteRssFeed(id: number): Observable<RssFeed> {
-    return this.http.delete<RssFeed>(`api/rssFeed/${id}`)
+  deleteRssFeed(id: number): Observable<any> {
+    return this.http.delete<any>(`api/rssFeed/${id}`)
     .pipe(
       tap(() => this.logger.log(`Deleted.`)),
-      catchError(this.errorHandler.handleError<RssFeed>(`deleteRssFeed(${id})`))
+      catchError(this.errorHandler.handleError<any>(`deleteRssFeed(${id})`))
     );
   }
 
@@ -56,7 +56,7 @@ export class RssFeedService {
   }
 
   updateRssFeed(rssFeed: RssFeed): Observable<any> {
-    return this.http.put(`api/rssFeed/${rssFeed.id}`, rssFeed, httpOptions)
+    return this.http.put<any>(`api/rssFeed/${rssFeed.id}`, rssFeed, httpOptions)
     .pipe(
       tap(() => this.logger.success(`Saved.`)),
       catchError(this.errorHandler.handleError<any>('updateRssFeed(rssFeed)'))

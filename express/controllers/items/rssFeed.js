@@ -20,5 +20,5 @@ exports.update = function(req, res){
 
 // Delete
 exports.delete = function(req, res){
-  res.json();
+  res.json(true);
 };
