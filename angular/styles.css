@@ -119,6 +119,10 @@ mat-form-field {
   background-color: green !important;
 }
 
+.text-align-center {
+  text-align: center !important;
+}
+
 .text-overflow-ellipsis {
   overflow: hidden !important;
   text-overflow: ellipsis !important;

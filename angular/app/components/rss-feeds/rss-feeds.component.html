@@ -3,11 +3,8 @@
     <mat-expansion-panel [expanded]="false">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          New RssFeed
+          Add a new RssFeed
         </mat-panel-title>
-        <mat-panel-description>
-          Add a new RSS feed to watch.
-        </mat-panel-description>
       </mat-expansion-panel-header>
       <mat-progress-bar [hidden]="!isLoadingAddRssFeed" mode="query" class="margin-top-20"></mat-progress-bar>
       <mat-form-field [hidden]="isLoadingAddRssFeed">
@@ -23,7 +20,7 @@
 </form>
 
 <mat-card class="margin-top-10">
-  <mat-card-header>
+  <mat-card-header class="text-align-center">
     <mat-card-title>RssFeeds</mat-card-title>
     <mat-card-subtitle>List of all your RSS feeds being watched.</mat-card-subtitle>
   </mat-card-header>

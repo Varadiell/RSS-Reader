@@ -1,5 +1,8 @@
 <mat-card *ngIf="rssFeed">
-  <mat-card-header>
+  <mat-card-header class="text-align-center">
+    <button mat-raised-button color="primary" routerLink="/rssFeeds" class="btn-sm margin-right-10">
+      <fa name="fas fa-arrow-left"></fa>
+    </button>
     <mat-card-title>{{rssFeed.title}}</mat-card-title>
     <mat-card-subtitle>{{rssFeed.url}}</mat-card-subtitle>
     <span class="fill-horizontal-space"></span>
@@ -37,10 +40,4 @@
       (page)="pageChange($event)">
     </mat-paginator>
   </mat-card-content>
-  <mat-divider></mat-divider>
-  <mat-card-actions>
-    <button mat-raised-button color="primary" routerLink="/rssFeeds">
-      <fa name="fas fa-arrow-left"></fa>
-    </button>
-  </mat-card-actions>
 </mat-card>

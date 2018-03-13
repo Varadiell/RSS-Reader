@@ -1,10 +1,10 @@
 <div *ngIf="rssNews">
 
   <mat-card class="height-37">
-    <mat-card-header>
-      <mat-card-title class="bold">{{rssNews.title}}</mat-card-title>
+    <mat-card-header class="text-align-center">
+      <mat-card-title>{{rssNews.title}}</mat-card-title>
       <span class="fill-horizontal-space"></span>
-      <button mat-raised-button color="primary" class="float-right" (click)="goBack()">
+      <button mat-raised-button color="primary" class="float-right btn-sm" (click)="goBack()">
         <fa name="fas fa-arrow-left"></fa>
       </button>
     </mat-card-header>
