@@ -28,6 +28,13 @@ export class RssNewsService {
     );
   }
 
+  getListRssNewsFavorites(id: number, page: number, pageSize: number): Observable<any> {
+    return this.http.get<any>(`api/rssNews/favorites?page=${page}&pageSize=${pageSize}`)
+    .pipe(
+      catchError(this.errorHandler.handleError(`getListRssNewsFavorites(${id}, ${page}, ${pageSize})`, {count : 0, listRssNews : []}))
+    );
+  }
+
   getRssNews(id: number): Observable<RssNews> {
     return this.http.get<RssNews>(`api/rssNews/${id}`)
     .pipe(

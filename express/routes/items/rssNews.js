@@ -2,7 +2,9 @@
 const rssNewsController = rootRequire('express/controllers/items/rssNews');
 // Middlewares
 const countRssNews = rootRequire('express/middlewares/countRssNews');
+const countRssNewsFavorites = rootRequire('express/middlewares/countRssNewsFavorites');
 const paginateRssNews = rootRequire('express/middlewares/paginateRssNews');
+const paginateRssNewsFavorites = rootRequire('express/middlewares/paginateRssNewsFavorites');
 const parseXmlResponse = rootRequire('express/middlewares/parseXmlResponse');
 const requestForRssNews = rootRequire('express/middlewares/requestForRssNews');
 const saveRssNews = rootRequire('express/middlewares/saveRssNews');
@@ -15,6 +17,14 @@ const unsetFavoriteRssNews = rootRequire('express/middlewares/unsetFavoriteRssNe
 
 // RssNews routes
 module.exports = function(router){
+
+  // PaginateFavorites
+  router.get(
+    '/api/rssNews/favorites',
+    countRssNewsFavorites(),
+    paginateRssNewsFavorites(),
+    rssNewsController.paginateFavorites
+  );
 
   // Get
   router.get(

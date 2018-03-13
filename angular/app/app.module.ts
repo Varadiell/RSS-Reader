@@ -4,6 +4,7 @@ import { ConfirmDialogComponent } from '@components/confirm-dialog/confirm-dialo
 import { NewsViewerComponent } from '@components/news-viewer/news-viewer.component';
 import { RssFeedEditorComponent } from '@components/rss-feed-editor/rss-feed-editor.component';
 import { RssFeedsComponent } from '@components/rss-feeds/rss-feeds.component';
+import { RssNewsFavoritesComponent } from '@components/rss-news-favorites/rss-news-favorites.component';
 import { RssNewsComponent } from '@components/rss-news/rss-news.component';
 
 // Directives
@@ -32,11 +33,12 @@ import { RssNewsService } from '@services/rss-news/rss-news.service';
   declarations: [
     AppComponent,
     ConfirmDialogComponent,
+    NewsViewerComponent,
     RssFeedEditorComponent,
     RssFeedsComponent,
     RssNewsComponent,
-    NewsViewerComponent,
-    WebviewDirective
+    RssNewsFavoritesComponent,
+    WebviewDirective,
   ],
   entryComponents: [
     ConfirmDialogComponent

@@ -11,6 +11,14 @@ exports.paginate = function(req, res){
   });
 };
 
+// PaginateFavorites
+exports.paginateFavorites = function(req, res){
+  res.json({
+    'count' : req.pagination.count,
+    'listRssNews' : req.listRssNews
+  });
+};
+
 // Refresh
 exports.refresh = function(req, res){
   res.json(true);

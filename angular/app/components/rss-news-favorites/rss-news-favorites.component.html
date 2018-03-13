@@ -1,25 +1,11 @@
-<mat-card *ngIf="rssFeed">
+<mat-card>
   <mat-card-header class="text-align-center">
-    <mat-card-title>{{rssFeed.title}}</mat-card-title>
-    <mat-card-subtitle>{{rssFeed.url}}</mat-card-subtitle>
+    <mat-card-title>Favorite RssNews</mat-card-title>
+    <mat-card-subtitle>All your favorite RssNews.</mat-card-subtitle>
     <span class="fill-horizontal-space"></span>
-    <button mat-raised-button color="primary" routerLink="/rssFeeds" class="btn-sm margin-right-10" matTooltip="Back" matTooltipPosition="below">
+    <button mat-raised-button color="primary" routerLink="/rssFeeds" class="btn-sm margin-right-10" matTooltip="Back" matTooltipPosition="left">
       <mat-icon fontSet="fa" fontIcon="fa-arrow-left"></mat-icon>
     </button>
-    <button mat-raised-button color="primary" [disabled]="isLoadingRssNews" class="btn-sm margin-right-10" (click)="refreshRssNews(rssFeed.id)">
-      <mat-icon fontSet="fa" fontIcon="fa-rss"></mat-icon> Refresh
-    </button>
-    <button mat-raised-button [matMenuTriggerFor]="menu" class="btn-sm" matTooltip="Options" matTooltipPosition="below">
-      <mat-icon fontSet="fa" fontIcon="fa-ellipsis-v"></mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="/rssFeed/{{rssFeed.id}}">
-        <mat-icon fontSet="fa" fontIcon="fa-edit"></mat-icon> Edit
-      </button>
-      <button mat-menu-item (click)="deleteRssFeed(rssFeed.id)">
-        <mat-icon fontSet="fa" fontIcon="fa-trash"></mat-icon> Delete
-      </button>
-    </mat-menu>
   </mat-card-header>
   <mat-divider></mat-divider>
   <mat-progress-bar [hidden]="!isLoadingRssNews" mode="query" class="margin-bottom-top-20"></mat-progress-bar>
