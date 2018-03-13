@@ -2,8 +2,11 @@
   <mat-toolbar color="primary">
     <span>RSS-Reader</span>
     <span class="fill-horizontal-space"></span>
-    <button routerLink="/rssFeeds" mat-raised-button color="primary">
+    <button routerLink="/rssFeeds" mat-raised-button color="primary" class="margin-right-10" matTooltip="Home" matTooltipPosition="below">
       <mat-icon fontSet="fa" fontIcon="fa-home"></mat-icon>
+    </button>
+    <button routerLink="/rssFeeds/favorites" mat-raised-button color="primary" matTooltip="Favorites" matTooltipPosition="below">
+      <mat-icon fontSet="fa" fontIcon="fa-star"></mat-icon>
     </button>
   </mat-toolbar>
 </div>

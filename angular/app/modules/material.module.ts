@@ -14,6 +14,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
@@ -33,7 +34,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     MatPaginatorModule,
     MatProgressBarModule,
     MatSnackBarModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatTooltipModule
   ],
   imports: [
     CommonModule

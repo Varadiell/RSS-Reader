@@ -11,8 +11,8 @@
         <input matInput #rssFeedUrl placeholder="URL"/>
       </mat-form-field>
       <mat-action-row [hidden]="isLoadingAddRssFeed">
-        <button mat-raised-button color="primary" type="submit">
-          <mat-icon fontSet="fa" fontIcon="fa-plus"></mat-icon> Add
+        <button mat-raised-button color="primary" type="submit" matTooltip="Add RssFeed" matTooltipPosition="left">
+          <mat-icon fontSet="fa" fontIcon="fa-plus"></mat-icon>
         </button>
       </mat-action-row>
     </mat-expansion-panel>
@@ -32,7 +32,7 @@
         <mat-icon mat-list-icon><img *ngIf="itemRssFeed.image" src="{{itemRssFeed.image}}" class="mat-icon"/></mat-icon>
         <h4 mat-line><a routerLink="/rssFeed/{{itemRssFeed.id}}/news">{{itemRssFeed.title}}</a></h4>
         <p mat-line>{{itemRssFeed.url}}</p>
-        <button mat-raised-button [matMenuTriggerFor]="menu" class="btn-sm">
+        <button mat-raised-button [matMenuTriggerFor]="menu" class="btn-sm" matTooltip="Options" matTooltipPosition="left">
           <mat-icon fontSet="fa" fontIcon="fa-ellipsis-v"></mat-icon>
         </button>
         <mat-menu #menu="matMenu">
