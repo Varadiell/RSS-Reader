@@ -7,6 +7,12 @@ const path = require('path');
 
 
 
+// Hot-reload when editing Angular code
+require('electron-reload')(path.join(__dirname, '../distAngular'), {
+  'electron' : path.join('node_modules', '.bin', 'electron.cmd'),
+  'hardResetMethod' : 'exit'
+});
+
 // Global reference of the window object to prevent auto-close when it is garbage collected.
 let mainWindow = null;
 
@@ -33,17 +39,23 @@ function createWindow(){
       'icon' : path.join(__dirname, '../distAngular/favicon.ico')
     });
 
-    // Remove the menu
-    mainWindow.setMenu(null);
-
     // Load index from Express in the main window.
     mainWindow.loadURL('http://localhost:' + app.expressApp.get('port'));
 
     // Focus on the main window.
     mainWindow.focus();
 
-    // OpenDevTools if node_env is development.
-    if(app.expressApp.get('node_env') === 'development') mainWindow.webContents.openDevTools();
+    // NODE_ENV development
+    if(app.expressApp.get('node_env') === 'development'){
+      // OpenDevTools
+      mainWindow.webContents.openDevTools();
+    }
+
+    // NODE_ENV production
+    if(app.expressApp.get('node_env') === 'production'){
+      // Remove the menu
+      mainWindow.setMenu(null);
+    }
 
     // Dereference the window object when the window is closed.
     mainWindow.on('closed', function(){

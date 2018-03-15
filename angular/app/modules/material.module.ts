@@ -16,11 +16,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
-
 @NgModule({
   exports: [
-    AngularFontAwesomeModule,
     MatButtonModule,
     MatCardModule,
     MatDialogModule,
