@@ -36,4 +36,20 @@ export class NewsViewerComponent implements OnInit {
     this.location.back();
   }
 
+  setFavorite(id: number): void {
+    this.rssNewsService.setFavorite(id).subscribe((res) => {
+      if (res === true) {
+        this.rssNews.isFavorite = true;
+      }
+    });
+  }
+
+  unsetFavorite(id: number): void {
+    this.rssNewsService.unsetFavorite(id).subscribe((res) => {
+      if (res === true) {
+        this.rssNews.isFavorite = false;
+      }
+    });
+  }
+
 }

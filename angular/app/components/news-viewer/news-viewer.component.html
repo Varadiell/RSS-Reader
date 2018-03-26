@@ -4,8 +4,14 @@
     <mat-card-header class="text-align-center">
       <mat-card-title>{{rssNews.title}}</mat-card-title>
       <span class="fill-horizontal-space"></span>
-      <button mat-raised-button color="primary" class="float-right btn-sm" (click)="goBack()" matTooltip="Back" matTooltipPosition="left">
+      <button mat-raised-button color="primary" class="btn-sm margin-right-10" (click)="goBack()" matTooltip="Back" matTooltipPosition="below">
         <mat-icon fontSet="fa" fontIcon="fa-arrow-left"></mat-icon>
+      </button>
+      <button mat-raised-button matTooltip="Add favorite" matTooltipPosition="below" class="btn-sm" (click)="setFavorite(rssNews.id)" *ngIf="!rssNews.isFavorite">
+        <mat-icon fontSet="fa" fontIcon="fa-star-o"></mat-icon>
+      </button>
+      <button mat-raised-button color="primary" matTooltip="Remove favorite" matTooltipPosition="below" class="btn-sm" (click)="unsetFavorite(rssNews.id)" *ngIf="rssNews.isFavorite">
+        <mat-icon fontSet="fa" fontIcon="fa-star"></mat-icon>
       </button>
     </mat-card-header>
   </mat-card>
