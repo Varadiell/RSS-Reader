@@ -40,3 +40,15 @@ Launch the entire application in production mode.
 ```
 npm start
 ```
+
+### Screenshots
+
+List of RSS feeds.
+
+![rss-reader1](https://user-images.githubusercontent.com/4981399/37905504-609c1808-30ff-11e8-8412-4e7ee11c51e9.png)
+
+
+List of RSS news by selected RSS feed.
+
+
+![rss-reader2](https://user-images.githubusercontent.com/4981399/37905506-639478e8-30ff-11e8-8d9d-b9c0e333f39a.png)
