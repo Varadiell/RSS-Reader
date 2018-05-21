@@ -2,8 +2,8 @@
 
 An *RSS reader* project, built with :
 - Electron
-- Express
-- Angular5
+- Express4
+- Angular6
 - SQLite3
 
 

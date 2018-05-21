@@ -5,8 +5,7 @@ import { RssNews } from '@models/rssNews';
 
 import { ErrorHandlerService} from '@services/error-handler/error-handler.service';
 
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 const httpOptions = {

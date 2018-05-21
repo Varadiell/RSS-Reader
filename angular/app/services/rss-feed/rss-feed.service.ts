@@ -6,8 +6,7 @@ import { RssFeed } from '@models/rssFeed';
 import { ErrorHandlerService} from '@services/error-handler/error-handler.service';
 import { LoggerService } from '@services/logger/logger.service';
 
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 const httpOptions = {
